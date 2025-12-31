@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Yacht Reviews — Barbour For Yachting</title>
+  <title>Yacht Reviews — Barbour Yachting</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <style>
     /* Reset بسيط */
@@ -53,9 +53,7 @@
 
   <!-- Hero -->
   <section class="hero">
-    <h1 id="hero-title">Barbour For Yachting</h1>
-    <div class="meta" id="hero-phone"></div>
-    <div class="meta" id="hero-email"></div>
+    <h1 id="hero-title">Barbour Yachting</h1>
   </section>
 
   <!-- Navigation -->
@@ -71,56 +69,19 @@
 
   <!-- محتوى رئيسي -->
   <main class="container">
-    <h2>Inquiry details</h2>
-    <div class="card">
-      <p><span class="label">Name:</span> <span id="f-name">—</span></p>
-      <p><span class="label">Phone:</span> <span id="f-phone">—</span></p>
-      <p><span class="label">Email:</span> <span id="f-email">—</span></p>
-      <p><span class="label">Subject:</span> <span id="f-subject">—</span></p>
-      <p><span class="label">Message:</span> <span id="f-message">—</span></p>
-    </div>
-
-    <h2 style="margin-top:24px;">About the yacht</h2>
-    <p>Premium yacht reviews and tailored sales assistance. Share your details above—we’ll align the right yacht to your needs.</p>
+    <h2>About the yacht</h2>
+    <p>Premium yacht reviews and tailored sales assistance. Share your details—we’ll align the right yacht to your needs.</p>
   </main>
 
   <!-- Footer -->
   <footer>
-    <p>&copy; 2025 Barbour For Yachting. All rights reserved.</p>
+    <p>&copy; 2025 Barbour Yachting. All rights reserved.</p>
     <p>
       <a href="#">Facebook</a> |
       <a href="#">Twitter</a> |
       <a href="#">Instagram</a>
     </p>
   </footer>
-
-  <script>
-    // نقرأ الباراميترات من الرابط ونعرِضها
-    window.addEventListener('DOMContentLoaded', () => {
-      const params = new URLSearchParams(window.location.search);
-
-      // نجيب القيم
-      const name    = params.get('name');
-      const phone   = params.get('phone');
-      const email   = params.get('email');
-      const subject = params.get('subject');
-      const message = params.get('message');
-
-      // نعرض بالـ Hero
-      const heroTitle = document.getElementById('hero-title');
-      heroTitle.textContent = name ? name : 'Barbour For Yachting';
-
-      document.getElementById('hero-phone').textContent = phone ? `Phone: ${phone}` : '';
-      document.getElementById('hero-email').textContent = email ? `Email: ${decodeURIComponent(email)}` : '';
-
-      // نعرض بالكرت
-      document.getElementById('f-name').textContent    = name    ? name : '—';
-      document.getElementById('f-phone').textContent   = phone   ? phone : '—';
-      document.getElementById('f-email').textContent   = email   ? decodeURIComponent(email) : '—';
-      document.getElementById('f-subject').textContent = subject ? subject : '—';
-      document.getElementById('f-message').textContent = message ? message.replace(/\+/g, ' ') : '—';
-    });
-  </script>
 
 </body>
 </html>
