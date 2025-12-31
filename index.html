@@ -39,13 +39,6 @@
       width: 36px; height: 36px; border-radius: 50%; object-fit: cover;
       border: 2px solid var(--gold);
     }
-    .topbar .contact-inline {
-      display: flex; gap: 16px; align-items: center; font-weight: 600;
-    }
-    .topbar .langs a {
-      color: var(--white); text-decoration: none; margin-left: 12px; opacity: 0.9;
-    }
-    .topbar .langs a:hover { color: var(--gold); }
 
     /* Navigation */
     nav {
@@ -61,7 +54,7 @@
     }
     nav .menu a:hover { color: var(--gold); }
 
-    /* Hero */
+    /* Hero full image */
     .hero {
       position: relative;
       height: 100vh;
@@ -72,19 +65,12 @@
       text-align: center;
       color: var(--white);
     }
-    .hero-overlay {
-      position: absolute;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background: rgba(0,0,0,0.4);
-    }
-    .hero-content {
-      position: relative;
-      z-index: 2;
-    }
     .hero h1 {
-      font-size: 56px;
+      font-size: 64px;
       margin: 0;
-      text-shadow: 2px 2px 8px rgba(0,0,0,0.6);
+      font-weight: bold;   /* غامق */
+      text-transform: uppercase;
+      /* بدون ظل */
     }
 
     /* Slider dots */
@@ -94,11 +80,10 @@
       left: 50%;
       transform: translateX(-50%);
       display: flex;
-      gap: 8px;
-      z-index: 2;
+      gap: 10px;
     }
     .dot {
-      width: 12px; height: 12px;
+      width: 14px; height: 14px;
       border-radius: 50%;
       background: rgba(255,255,255,0.6);
     }
@@ -139,14 +124,6 @@
     </a>
     <div class="contact-inline">
       <span>Phone: +90 252 385 34 22</span>
-      <div class="langs">
-        <a href="#">EN</a>
-        <a href="#">TR</a>
-        <a href="#">DE</a>
-        <a href="#">FR</a>
-        <a href="#">RU</a>
-        <a href="#">AR</a>
-      </div>
     </div>
   </div>
 
@@ -163,10 +140,7 @@
 
   <!-- Hero -->
   <section class="hero">
-    <div class="hero-overlay"></div>
-    <div class="hero-content">
-      <h1>Barbour Yachting</h1>
-    </div>
+    <h1>Barbour Yachting</h1>
     <div class="dots">
       <div class="dot active"></div>
       <div class="dot"></div>
