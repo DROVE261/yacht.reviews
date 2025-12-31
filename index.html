@@ -2,66 +2,38 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Barbour For Yachting — Contact</title>
+  <title>Barbour For Yachting</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <style>
-    :root {
-      --navy: #0b1a33;
-      --gold: #d4af37;
-      --white: #ffffff;
-      --gray: #f2f4f7;
-      --text: #1f2937;
-    }
+    body { margin:0; font-family: Arial, sans-serif; }
 
-    * { box-sizing: border-box; }
-    body { margin: 0; font-family: 'Segoe UI', Arial, sans-serif; color: var(--text); background: var(--white); }
-
-    /* Hero full image */
+    /* Hero section */
     .hero {
-      position: relative;
       height: 100vh;
       background: url('azimut.png') center/cover no-repeat;
       display: flex;
       align-items: center;
       justify-content: center;
       text-align: center;
-      color: var(--white);
+      color: #fff;
     }
     .hero h1 {
       font-size: 64px;
-      margin: 0;
-      font-weight: bold;      /* غامق */
+      font-weight: bold;   /* غامق */
+      text-shadow: none;   /* بدون ظل */
       text-transform: uppercase;
-      text-shadow: none;      /* بدون ظل */
-    }
-
-    /* Slider dots */
-    .dots {
-      position: absolute;
-      bottom: 20px;
-      left: 50%;
-      transform: translateX(-50%);
-      display: flex;
-      gap: 10px;
-    }
-    .dot {
-      width: 14px; height: 14px;
-      border-radius: 50%;
-      background: rgba(255,255,255,0.6);
-    }
-    .dot.active {
-      background: var(--gold);
+      margin: 0;
     }
 
     /* Top bar */
     .topbar {
-      background: var(--navy);
-      color: var(--white);
+      background: #0b1a33;
+      color: #fff;
       display: flex;
       justify-content: space-between;
       align-items: center;
       padding: 10px 24px;
-      border-bottom: 3px solid var(--gold);
+      border-bottom: 3px solid #d4af37;
     }
     .topbar .brand {
       display: flex;
@@ -69,61 +41,45 @@
       gap: 12px;
       font-weight: 700;
       letter-spacing: 0.5px;
-      color: var(--white);
+      color: #fff;
       text-decoration: none;
     }
     .topbar .brand img {
       width: 36px; height: 36px; border-radius: 50%; object-fit: cover;
-      border: 2px solid var(--gold);
+      border: 2px solid #d4af37;
     }
 
     /* Navigation */
     nav {
-      background: var(--navy);
+      background: #0b1a33;
       border-top: 1px solid rgba(255,255,255,0.1);
-      border-bottom: 4px solid var(--gold);
+      border-bottom: 4px solid #d4af37;
     }
     nav .menu {
-      max-width: 1200px; margin: 0 auto; display: flex; gap: 24px; padding: 14px 24px;
+      max-width: 1200px; margin: 0 auto;
+      display: flex; gap: 24px; padding: 14px 24px;
     }
     nav .menu a {
-      color: var(--white); text-decoration: none; font-weight: 600;
+      color: #fff; text-decoration: none; font-weight: 600;
     }
-    nav .menu a:hover { color: var(--gold); }
+    nav .menu a:hover { color: #d4af37; }
 
     /* Footer */
     footer {
-      background: var(--navy); color: var(--white);
-      border-top: 4px solid var(--gold);
+      background: #0b1a33; color: #fff;
+      border-top: 4px solid #d4af37;
       margin-top: 48px; padding: 32px 24px;
+      text-align: center;
     }
-    .footer-inner {
-      max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 24px;
-    }
-    @media (max-width: 900px) {
-      .footer-inner { grid-template-columns: 1fr; }
-    }
-    .footer-col h4 { margin: 0 0 12px; color: var(--gold); }
-    .footer-col a { color: var(--white); text-decoration: none; display: block; margin-bottom: 8px; }
-    .footer-col a:hover { color: var(--gold); }
-    .social { display: flex; gap: 12px; margin-top: 12px; }
-    .social a {
-      display: inline-block; background: var(--gold); color: var(--navy);
-      padding: 8px 12px; border-radius: 6px; font-weight: 700; text-decoration: none;
-    }
-    .copy { text-align: center; margin-top: 24px; opacity: 0.9; }
+    footer a { color: #fff; text-decoration: none; margin: 0 8px; }
+    footer a:hover { color: #d4af37; }
   </style>
 </head>
 <body>
 
-  <!-- Hero أول شي بالصفحة -->
+  <!-- Hero أول الصفحة -->
   <section class="hero">
     <h1>Barbour For Yachting</h1>
-    <div class="dots">
-      <div class="dot active"></div>
-      <div class="dot"></div>
-      <div class="dot"></div>
-    </div>
   </section>
 
   <!-- Top bar -->
@@ -150,33 +106,12 @@
 
   <!-- Footer -->
   <footer>
-    <div class="footer-inner">
-      <div class="footer-col">
-        <h4>Barbour For Yachting</h4>
-        <p>Premium yacht reviews, sales, and rentals. Trusted service and global reach.</p>
-        <div class="social">
-          <a href="#">Facebook</a>
-          <a href="#">Twitter</a>
-          <a href="#">Instagram</a>
-        </div>
-      </div>
-      <div class="footer-col">
-        <h4>Links</h4>
-        <a href="#">Home</a>
-        <a href="#">About Us</a>
-        <a href="#">Our Services</a>
-        <a href="#">Blog</a>
-        <a href="#">Contact</a>
-      </div>
-      <div class="footer-col">
-        <h4>Contact</h4>
-        <p>Yalıkavak Yalı İş Merkezi, Bodrum / Muğla, Turkey</p>
-        <p>Email: info@yacht.reviews</p>
-        <p>Office: +90 252 385 34 22</p>
-        <p>Mobile: +90 532 693 40 48</p>
-      </div>
-    </div>
-    <div class="copy">&copy; 2025 Barbour For Yachting. All rights reserved.</div>
+    <p>&copy; 2025 Barbour For Yachting. All rights reserved.</p>
+    <p>
+      <a href="#">Facebook</a> |
+      <a href="#">Twitter</a> |
+      <a href="#">Instagram</a>
+    </p>
   </footer>
 
 </body>
