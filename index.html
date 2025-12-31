@@ -12,6 +12,7 @@
       height: 100vh;
       background: url('azimut.png') center/cover no-repeat;
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
       text-align: center;
@@ -22,37 +23,16 @@
       font-weight: bold;   /* غامق */
       text-shadow: none;   /* بدون ظل */
       text-transform: uppercase;
-      margin: 0;
+      margin: 0 0 20px 0;
     }
-
-    /* Top bar */
-    .topbar {
-      background: #0b1a33;
-      color: #fff;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 10px 24px;
-      border-bottom: 3px solid #d4af37;
-    }
-    .topbar .brand {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      font-weight: 700;
-      letter-spacing: 0.5px;
-      color: #fff;
-      text-decoration: none;
-    }
-    .topbar .brand img {
-      width: 36px; height: 36px; border-radius: 50%; object-fit: cover;
-      border: 2px solid #d4af37;
+    .hero p {
+      font-size: 20px;
+      margin: 4px 0;
     }
 
     /* Navigation */
     nav {
       background: #0b1a33;
-      border-top: 1px solid rgba(255,255,255,0.1);
       border-bottom: 4px solid #d4af37;
     }
     nav .menu {
@@ -79,19 +59,10 @@
 
   <!-- Hero أول الصفحة -->
   <section class="hero">
-    <h1>Barbour For Yachting</h1>
+    <h1 id="hero-title">Barbour For Yachting</h1>
+    <p id="hero-phone"></p>
+    <p id="hero-email"></p>
   </section>
-
-  <!-- Top bar -->
-  <div class="topbar">
-    <a class="brand" href="#">
-      <img src="logo.jpg" alt="Logo" />
-      Barbour For Yachting
-    </a>
-    <div class="contact-inline">
-      <span>Phone: +90 252 385 34 22</span>
-    </div>
-  </div>
 
   <!-- Navigation -->
   <nav>
@@ -113,6 +84,24 @@
       <a href="#">Instagram</a>
     </p>
   </footer>
+
+  <script>
+    // قراءة القيم من الرابط
+    const params = new URLSearchParams(window.location.search);
+    const name = params.get("name");
+    const phone = params.get("phone");
+    const email = params.get("email");
+
+    if (name) {
+      document.getElementById("hero-title").textContent = name;
+    }
+    if (phone) {
+      document.getElementById("hero-phone").textContent = "Phone: " + phone;
+    }
+    if (email) {
+      document.getElementById("hero-email").textContent = "Email: " + email;
+    }
+  </script>
 
 </body>
 </html>
