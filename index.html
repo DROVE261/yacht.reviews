@@ -2,66 +2,60 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Barbour For Yachting</title>
+  <title>Yacht Reviews — Barbour For Yachting</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <style>
-    body { margin:0; font-family: Arial, sans-serif; }
+    /* Reset بسيط */
+    * { box-sizing: border-box; }
+    body { margin:0; font-family: Arial, sans-serif; color:#111; background:#fff; }
 
-    /* Hero section */
+    /* Hero */
     .hero {
       height: 100vh;
       background: url('azimut.png') center/cover no-repeat;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      color: #fff;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      text-align: center; color: #fff; padding: 24px;
     }
     .hero h1 {
-      font-size: 64px;
-      font-weight: bold;   /* غامق */
-      text-shadow: none;   /* بدون ظل */
-      text-transform: uppercase;
-      margin: 0 0 20px 0;
+      font-size: 64px; font-weight: bold;
+      text-shadow: none; text-transform: uppercase; margin: 0 0 16px 0;
     }
-    .hero p {
-      font-size: 20px;
-      margin: 4px 0;
-    }
+    .hero .meta { font-size: 18px; margin: 4px 0; }
 
-    /* Navigation */
-    nav {
-      background: #0b1a33;
-      border-bottom: 4px solid #d4af37;
-    }
-    nav .menu {
-      max-width: 1200px; margin: 0 auto;
-      display: flex; gap: 24px; padding: 14px 24px;
-    }
-    nav .menu a {
-      color: #fff; text-decoration: none; font-weight: 600;
-    }
-    nav .menu a:hover { color: #d4af37; }
+    /* محتوى */
+    .container { max-width: 1000px; margin: 32px auto; padding: 0 16px; }
+    h2 { margin: 0 0 12px 0; font-size: 28px; }
+    p { margin: 8px 0; line-height: 1.6; }
+
+    /* Nav */
+    nav { background:#0b1a33; border-bottom:4px solid #d4af37; }
+    nav .menu { max-width:1200px; margin:0 auto; display:flex; gap:24px; padding:14px 24px; }
+    nav .menu a { color:#fff; text-decoration:none; font-weight:600; }
+    nav .menu a:hover { color:#d4af37; }
 
     /* Footer */
     footer {
-      background: #0b1a33; color: #fff;
-      border-top: 4px solid #d4af37;
-      margin-top: 48px; padding: 32px 24px;
-      text-align: center;
+      background:#0b1a33; color:#fff; border-top:4px solid #d4af37;
+      margin-top:48px; padding:32px 24px; text-align:center;
     }
-    footer a { color: #fff; text-decoration: none; margin: 0 8px; }
-    footer a:hover { color: #d4af37; }
+    footer a { color:#fff; text-decoration:none; margin:0 8px; }
+    footer a:hover { color:#d4af37; }
+
+    /* كرت معلومات */
+    .card {
+      border:1px solid #eee; border-radius:12px; padding:16px; background:#fafafa;
+    }
+    .label { font-weight:700; color:#333; }
   </style>
 </head>
 <body>
 
-  <!-- Hero أول الصفحة -->
+  <!-- Hero -->
   <section class="hero">
     <h1 id="hero-title">Barbour For Yachting</h1>
-    <p id="hero-phone"></p>
-    <p id="hero-email"></p>
+    <div class="meta" id="hero-phone"></div>
+    <div class="meta" id="hero-email"></div>
   </section>
 
   <!-- Navigation -->
@@ -75,6 +69,21 @@
     </div>
   </nav>
 
+  <!-- محتوى رئيسي -->
+  <main class="container">
+    <h2>Inquiry details</h2>
+    <div class="card">
+      <p><span class="label">Name:</span> <span id="f-name">—</span></p>
+      <p><span class="label">Phone:</span> <span id="f-phone">—</span></p>
+      <p><span class="label">Email:</span> <span id="f-email">—</span></p>
+      <p><span class="label">Subject:</span> <span id="f-subject">—</span></p>
+      <p><span class="label">Message:</span> <span id="f-message">—</span></p>
+    </div>
+
+    <h2 style="margin-top:24px;">About the yacht</h2>
+    <p>Premium yacht reviews and tailored sales assistance. Share your details above—we’ll align the right yacht to your needs.</p>
+  </main>
+
   <!-- Footer -->
   <footer>
     <p>&copy; 2025 Barbour For Yachting. All rights reserved.</p>
@@ -86,21 +95,31 @@
   </footer>
 
   <script>
-    // قراءة القيم من الرابط
-    const params = new URLSearchParams(window.location.search);
-    const name = params.get("name");
-    const phone = params.get("phone");
-    const email = params.get("email");
+    // نقرأ الباراميترات من الرابط ونعرِضها
+    window.addEventListener('DOMContentLoaded', () => {
+      const params = new URLSearchParams(window.location.search);
 
-    if (name) {
-      document.getElementById("hero-title").textContent = name;
-    }
-    if (phone) {
-      document.getElementById("hero-phone").textContent = "Phone: " + phone;
-    }
-    if (email) {
-      document.getElementById("hero-email").textContent = "Email: " + email;
-    }
+      // نجيب القيم
+      const name    = params.get('name');
+      const phone   = params.get('phone');
+      const email   = params.get('email');
+      const subject = params.get('subject');
+      const message = params.get('message');
+
+      // نعرض بالـ Hero
+      const heroTitle = document.getElementById('hero-title');
+      heroTitle.textContent = name ? name : 'Barbour For Yachting';
+
+      document.getElementById('hero-phone').textContent = phone ? `Phone: ${phone}` : '';
+      document.getElementById('hero-email').textContent = email ? `Email: ${decodeURIComponent(email)}` : '';
+
+      // نعرض بالكرت
+      document.getElementById('f-name').textContent    = name    ? name : '—';
+      document.getElementById('f-phone').textContent   = phone   ? phone : '—';
+      document.getElementById('f-email').textContent   = email   ? decodeURIComponent(email) : '—';
+      document.getElementById('f-subject').textContent = subject ? subject : '—';
+      document.getElementById('f-message').textContent = message ? message.replace(/\+/g, ' ') : '—';
+    });
   </script>
 
 </body>
