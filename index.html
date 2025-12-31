@@ -1,87 +1,662 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <title>Yacht Reviews — Barbour Yachting</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <style>
-    /* Reset بسيط */
-    * { box-sizing: border-box; }
-    body { margin:0; font-family: Arial, sans-serif; color:#111; background:#fff; }
-
-    /* Hero */
-    .hero {
-      height: 100vh;
-      background: url('azimut.png') center/cover no-repeat;
-      display: flex; flex-direction: column;
-      align-items: center; justify-content: center;
-      text-align: center; color: #fff; padding: 24px;
-    }
-    .hero h1 {
-      font-size: 64px; font-weight: bold;
-      text-shadow: none; text-transform: uppercase; margin: 0 0 16px 0;
-    }
-    .hero .meta { font-size: 18px; margin: 4px 0; }
-
-    /* محتوى */
-    .container { max-width: 1000px; margin: 32px auto; padding: 0 16px; }
-    h2 { margin: 0 0 12px 0; font-size: 28px; }
-    p { margin: 8px 0; line-height: 1.6; }
-
-    /* Nav */
-    nav { background:#0b1a33; border-bottom:4px solid #d4af37; }
-    nav .menu { max-width:1200px; margin:0 auto; display:flex; gap:24px; padding:14px 24px; }
-    nav .menu a { color:#fff; text-decoration:none; font-weight:600; }
-    nav .menu a:hover { color:#d4af37; }
-
-    /* Footer */
-    footer {
-      background:#0b1a33; color:#fff; border-top:4px solid #d4af37;
-      margin-top:48px; padding:32px 24px; text-align:center;
-    }
-    footer a { color:#fff; text-decoration:none; margin:0 8px; }
-    footer a:hover { color:#d4af37; }
-
-    /* كرت معلومات */
-    .card {
-      border:1px solid #eee; border-radius:12px; padding:16px; background:#fafafa;
-    }
-    .label { font-weight:700; color:#333; }
-  </style>
-</head>
-<body>
-
-  <!-- Hero -->
-  <section class="hero">
-    <h1 id="hero-title">Barbour Yachting</h1>
-  </section>
-
-  <!-- Navigation -->
-  <nav>
-    <div class="menu">
-      <a href="#">Home</a>
-      <a href="#">About Us</a>
-      <a href="#">Our Services</a>
-      <a href="#">Blog</a>
-      <a href="#">Contact</a>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <base href="https://en.istanbulyachting.com/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <title>
+      İstanbul Yachting
+    </title>
+    <meta name="description" content="İstanbul Yachting, Yacht Sales &amp; Charters" />
+    <meta name="googlebot" content="index, follow" />
+    <meta name="robots" content="index, follow" />
+    <meta name="msapplication-TileColor" content="#003399" />
+    <meta name="theme-color" content="#003399" />
+    <link rel="stylesheet" href="assets/css/aos.css" />
+    <link rel="stylesheet" href="assets/css/fancybox.css" />
+    <link rel="stylesheet" href="assets/css/swiper-bundle.css" />
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.21/themes/ui-lightness/jquery-ui.css" />
+    <link rel="stylesheet" href="assets/css/main.min.css" />
+    <link rel="shortcut icon" href="fav.png" />
+  </head>
+  <body>
+    <div id="loader">
+      <div class="loader-slide bg-white">
+        <img src="https://cdn.istanbulyachting.com/assets/img/logo.png" class="h-100px mb-4" />
+      </div>
     </div>
-  </nav>
+    <header class="position-sticky start-0 top-0 end-0">
+      <div class="mobile-menu h-100">
+        <img src="https://cdn.istanbulyachting.com/assets/img/hero/1.jpg" class="position-absolute w-100 h-100 object-cover" />
+        <div class="position-absolute w-100 h-100 bg-primary bg-opacity-75">
+        </div>
+        <div class="mobile-menu-list d-flex flex-md-row flex-column justify-content-between h-100">
+          <a href="https://en.istanbulyachting.com/" class="mobile-menu-item d-flex flex-column align-items-center justify-content-center position-relative fs-4 fw-bold text-white h-100 border-end border-white border-opacity-10 w-100">          <div class="menu-text">
+            <span>            Home page
+</span>
+          </div>
+          <div class="icon w-50px h-50px bg-primary rounded-circle d-flex align-items-center justify-content-center text-white bg-secondary fs-14">
+            <i class="fa fa-chevron-right"></i>
+          </div>
+</a>
+          <a href="hakkimizda.php" class="mobile-menu-item d-flex flex-column align-items-center justify-content-center position-relative fs-4 fw-bold text-white h-100 border-end border-white border-opacity-10 w-100">          <div class="menu-text">
+            <span>            About us
+</span>
+          </div>
+          <div class="icon w-50px h-50px bg-primary rounded-circle d-flex align-items-center justify-content-center text-white bg-secondary fs-14">
+            <i class="fa fa-chevron-right"></i>
+          </div>
+</a>
+          <a href="hizmetler.php" class="mobile-menu-item d-flex flex-column align-items-center justify-content-center position-relative fs-4 fw-bold text-white h-100 border-end border-white border-opacity-10 w-100">          <div class="menu-text">
+            <span>            Our services
+</span>
+          </div>
+          <div class="icon w-50px h-50px bg-primary rounded-circle d-flex align-items-center justify-content-center text-white bg-secondary fs-14">
+            <i class="fa fa-chevron-right"></i>
+          </div>
+</a>
+          <a href="blog.php" class="mobile-menu-item d-flex flex-column align-items-center justify-content-center position-relative fs-4 fw-bold text-white h-100 border-end border-white border-opacity-10 w-100">          <div class="menu-text">
+            <span>            Blog
+</span>
+          </div>
+          <div class="icon w-50px h-50px bg-primary rounded-circle d-flex align-items-center justify-content-center text-white bg-secondary fs-14">
+            <i class="fa fa-chevron-right"></i>
+          </div>
+</a>
+          <a href="iletisim.php" class="mobile-menu-item d-flex flex-column align-items-center justify-content-center position-relative fs-4 fw-bold text-white h-100 w-100">          <div class="menu-text">
+            <span>            Communication
+</span>
+          </div>
+          <div class="icon w-50px h-50px bg-primary rounded-circle d-flex align-items-center justify-content-center text-white bg-secondary fs-14">
+            <i class="fa fa-chevron-right"></i>
+          </div>
+</a>
+        </div>
+      </div>
+      <div class="container-fluid h-100 d-flex align-items-center justify-content-between">
+        <div class="menu-btn d-flex align-items-center gap-3">
+          <button class="menu-trigger" id="menu-trigger">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+          <button type="button" class="fs-12 fw-semibold letter-spacing d-lg-flex d-none" style="z-index: 102">
+            MENU
+          </button>
+        </div>
+        <a href="https://en.istanbulyachting.com/" class="logo position-absolute start-50 top-50 translate-middle">        <img src="https://cdn.istanbulyachting.com/assets/img/logo.png" class="h-90px" />
+</a>
+        <div class="header-right d-flex align-items-center gap-lg-5 gap-lg-4 gap-3">
+          <a href="tel:+90 252 385 34 22" target="_blank" class="phone d-lg-flex d-none align-items-center gap-3 hover-scale">          <svg class="text-primary" width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M3.86484 0.576389C3.68437 0.140452 3.20859 -0.0915797 2.75391 0.0326391L0.691406 0.595139C0.283594 0.707639 0 1.07795 0 1.49983C0 7.29826 4.70156 11.9998 10.5 11.9998C10.9219 11.9998 11.2922 11.7162 11.4047 11.3084L11.9672 9.24592C12.0914 8.79123 11.8594 8.31545 11.4234 8.13498L9.17344 7.19748C8.79141 7.03811 8.34844 7.14826 8.08828 7.46936L7.14141 8.62483C5.49141 7.84436 4.15547 6.50842 3.375 4.85842L4.53047 3.91389C4.85156 3.65139 4.96172 3.21076 4.80234 2.82873L3.86484 0.578733V0.576389Z" fill="currentcolor">
+            </path>
+          </svg>
+          <span class="fs-12 fw-semibold letter-spacing text-gray-600 hover-text-primary">          +90 252 385 34 22
+</span>
+</a>
+          <div class="dropdown">
+            <button type="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <img src="https://cdn.istanbulyachting.com/assets/img/flag/en.svg" class="h-20px" />
+              <i class="fa fa-chevron-down text-dark fs-10 ms-2"></i>
+            </button>
+            <ul class="dropdown-menu mt-2" style="min-width:auto">
+              <li>
+                <a class="dropdown-item py-2 fs-13 d-flex align-items-center gap-2" href="https://istanbulyachting.com/">                <img src="https://cdn.istanbulyachting.com/assets/img/flag/tr.svg" class="h-20px" />
+                <span>                Türkçe
+</span>
+</a>
+              </li>
+              <li>
+                <a class="dropdown-item py-2 fs-13 d-flex align-items-center gap-2" href="https://de.istanbulyachting.com/">                <img src="https://cdn.istanbulyachting.com/assets/img/flag/gr.svg" class="h-20px" />
+                <span>                Deutsch
+</span>
+</a>
+              </li>
+              <li>
+                <a class="dropdown-item py-2 fs-13 d-flex align-items-center gap-2" href="https://fr.istanbulyachting.com/">                <img src="https://cdn.istanbulyachting.com/assets/img/flag/fr.svg" class="h-20px" />
+                <span>                Français
+</span>
+</a>
+              </li>
+              <li>
+                <a class="dropdown-item py-2 fs-13 d-flex align-items-center gap-2" href="https://ru.istanbulyachting.com/">                <img src="https://cdn.istanbulyachting.com/assets/img/flag/ru.svg" class="h-20px" />
+                <span>                Русский
+</span>
+</a>
+              </li>
+              <li>
+                <a class="dropdown-item py-2 fs-13 d-flex align-items-center gap-2" href="https://ar.istanbulyachting.com/">                <img src="https://cdn.istanbulyachting.com/assets/img/flag/ar.svg" class="h-20px" />
+                <span>                عربي
+</span>
+</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </header>
+    <div class="hero d-flex position-relative">
+      <div class="scroll mb-3 pb-3 d-lg-flex d-none" data-aos="fade-up" data-aos-delay="200" data-aos-duration="1500">
+        <div class="cont-mouse">
+          <div class="mouse">
+            <div class="rcont">
+              <div class="ruedita">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="bg-gray-200 w-70px h-100 d-md-flex d-none align-items-center justify-content-center flex-shrink-0" data-aos="fade-right" data-aos-delay="200" data-aos-duration="1500">
+        <a href="#yacht-search" class="d-flex flex-column fw-semibold text-center">        <span>        S
+</span>
+        <span>        E
+</span>
+        <span>        A
+</span>
+        <span>        R
+</span>
+        <span>        C
+</span>
+        <span>        H
+</span>
+</a>
+      </div>
+      <div class="hero-list swiper">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide">
+            <img src="https://cdn.istanbulyachting.com/assets/img/hero/1.jpg" class="w-100 h-100 object-cover" />
+          </div>
+          <div class="swiper-slide">
+            <img src="https://cdn.istanbulyachting.com/assets/img/hero/2.jpg" class="w-100 h-100 object-cover" />
+          </div>
+        </div>
+        <div class="swiper-button-prev">
+        </div>
+        <div class="swiper-button-next">
+        </div>
+      </div>
+      <div class="bg-gray-200 w-70px h-100 d-md-flex d-none align-items-center justify-content-center flex-shrink-0" data-aos="fade-left" data-aos-delay="200" data-aos-duration="1500">
+        <div class="d-flex flex-column text-center gap-3">
+          <a href="https://www.facebook.com/istanbulyachting" target="_blank" class="d-block hover-scale">          <i class="fab fa-facebook-f"></i>
+</a>
+          <a href="https://twitter.com/istanbulyacht" target="_blank" class="d-block hover-scale">          <i class="fab fa-twitter"></i>
+</a>
+          <a href="https://www.instagram.com/istanbulyachtingofficial" target="_blank" class="d-block hover-scale">          <i class="fab fa-instagram"></i>
+</a>
+          <a href="https://wa.me/905326934048" target="_blank" class="d-block hover-scale">          <i class="fab fa-whatsapp"></i>
+</a>
+        </div>
+      </div>
+    </div>
+    <section class="pb-md-5 pb-4 pt-4">
+      <div class="container pb-lg-5">
+        <div class="row justify-content-center">
+          <div class="col-md-6">
+            <div class="main-title text-center text-dark fs-2 fw-normal pb-md-4" data-aos="fade-down" data-aos-delay="100" data-aos-duration="1500">
+              We provide exceptional service to our customers worldwide.
+            </div>
+          </div>
+        </div>
+        <div class="main-list mt-5">
+          <div class="row g-md-5 g-4">
+            <div class="col-md-4">
+              <a href="satilik.php" class="d-block" data-aos="fade-up" data-aos-delay="100" data-aos-duration="1500">              <div class="image">
+                <img src="https://cdn.istanbulyachting.com/assets/img/1.jpg" class="w-100 h-250px" />
+              </div>
+              <div class="p-4 text-center">
+                <h4 class="fw-light mb-3 px-md-5">
+                  Do you want to buy a yacht?
+                </h4>
+                <p class="text-gray-700 fs-14 px-md-4 pb-3">
+                  You can find the right yacht to buy the yacht you need.
+                </p>
+                <span class="btn btn-primary fs-14 fw-light rounded-0 mt-4 px-4 py-2">                SEARCH YACHTS FOR SALE
+                <i class="fa fa-chevron-right fs-11 ms-2"></i>
+</span>
+              </div>
+</a>
+            </div>
+            <div class="col-md-4">
+              <a href="kiralik.php" class="d-block" data-aos="fade-up" data-aos-delay="150" data-aos-duration="1500">              <div class="image">
+                <img src="https://cdn.istanbulyachting.com/assets/img/2.jpg" class="w-100 h-250px" />
+              </div>
+              <div class="p-4 text-center">
+                <h4 class="fw-light mb-3 px-md-5">
+                  Are you looking for a yacht for rent?
+                </h4>
+                <p class="text-gray-700 fs-14 px-md-4 pb-3">
+                  You can rent a yacht to experience unforgettable moments during your holiday.
+                </p>
+                <span class="btn btn-primary fs-14 fw-light rounded-0 mt-4 px-4 py-2">                SEARCH A YACHT FOR RENT
+                <i class="fa fa-chevron-right fs-11 ms-2"></i>
+</span>
+              </div>
+</a>
+            </div>
+            <div class="col-md-4">
+              <a href="yat-sat.php" class="d-block" data-aos="fade-up" data-aos-delay="200" data-aos-duration="1500">              <div class="image">
+                <img src="https://cdn.istanbulyachting.com/assets/img/3.jpg" class="w-100 h-250px" />
+              </div>
+              <div class="p-4 text-center">
+                <h4 class="fw-light mb-3 px-md-5">
+                  Are you selling a yacht?
+                </h4>
+                <p class="text-gray-700 fs-14 px-md-4 pb-3">
+                  You can add your yacht to our site immediately to sell it.
+                </p>
+                <span class="btn btn-primary fs-14 fw-light rounded-0 mt-4 px-4 py-2">                SELL A YACHT
+                <i class="fa fa-chevron-right fs-11 ms-2"></i>
+</span>
+              </div>
+</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="py-md-5 py-4 bg-gray-200">
+      <div class="container py-lg-5">
+        <div class="main-title text-center text-secondary fs-3 fw-normal letter-spacing mb-lg-5 pb-lg-2 mb-4" data-aos="fade-down" data-aos-delay="100" data-aos-duration="1500">
+          LATEST ANNOUNCEMENTS
+        </div>
+        <div class="listing swiper" data-aos="fade-up" data-aos-delay="100" data-aos-duration="1500">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide">
+              <a href="ilan/2018-azimut-atlantis-43-613" class="d-block bg-white p-2">              <div class="image overflow-hidden position-relative h-250px">
+                <div class="more-btn position-absolute end-0 bottom-0 w-50px h-50px d-flex align-items-center justify-content-center text-white bg-primary m-3">
+                  <i class="fa fa-chevron-right"></i>
+                </div>
+                <img src="https://cdn.istanbulyachting.com/resimler/resimler-813876955464416.18" class="w-100 h-100 object-cover" />
+              </div>
+              <div class="px-2 py-3">
+                <h3 class="fw-semibold mb-1 fs-18">
+                  2018 | Azimut Atlantis 43
+                </h3>
+                <div class="fs-14 text-gray-600 fw-semibold">
+                  2018
+                </div>
+                <div class="features-list mt-4 d-flex flex-wrap gap-3">
+                  <div class="d-flex align-items-center gap-2 me-4">
+                    <i class="fa fa-arrows-left-right text-primary"></i>
+                    <span class="fs-13 text-gray-700">                    Length: 13.89 m
+</span>
+                  </div>
+                  <div class="d-flex align-items-center gap-2 me-4">
+                    <i class="fa fa-bed text-primary"></i>
+                    <span class="fs-13 text-gray-700">                    Cabin : 2
+</span>
+                  </div>
+                </div>
+              </div>
+</a>
+            </div>
+            <div class="swiper-slide">
+              <a href="ilan/2018-axopar-37-mediterranean-612" class="d-block bg-white p-2">              <div class="image overflow-hidden position-relative h-250px">
+                <div class="more-btn position-absolute end-0 bottom-0 w-50px h-50px d-flex align-items-center justify-content-center text-white bg-primary m-3">
+                  <i class="fa fa-chevron-right"></i>
+                </div>
+                <img src="https://cdn.istanbulyachting.com/resimler/image-927343535200953.JPG" class="w-100 h-100 object-cover" />
+              </div>
+              <div class="px-2 py-3">
+                <h3 class="fw-semibold mb-1 fs-18">
+                  2018 Axopar 37 Mediterranean
+                </h3>
+                <div class="fs-14 text-gray-600 fw-semibold">
+                  2018
+                </div>
+                <div class="features-list mt-4 d-flex flex-wrap gap-3">
+                  <div class="d-flex align-items-center gap-2 me-4">
+                    <i class="fa fa-arrows-left-right text-primary"></i>
+                    <span class="fs-13 text-gray-700">                    Length: 10.80 m
+</span>
+                  </div>
+                  <div class="d-flex align-items-center gap-2 me-4">
+                    <i class="fa fa-bed text-primary"></i>
+                    <span class="fs-13 text-gray-700">                    Cabin : 1
+</span>
+                  </div>
+                </div>
+              </div>
+</a>
+            </div>
+            <div class="swiper-slide">
+              <a href="ilan/2010-sunseeker-predator-60-610" class="d-block bg-white p-2">              <div class="image overflow-hidden position-relative h-250px">
+                <div class="more-btn position-absolute end-0 bottom-0 w-50px h-50px d-flex align-items-center justify-content-center text-white bg-primary m-3">
+                  <i class="fa fa-chevron-right"></i>
+                </div>
+                <img src="https://cdn.istanbulyachting.com/resimler/image-186211104163900.44" class="w-100 h-100 object-cover" />
+              </div>
+              <div class="px-2 py-3">
+                <h3 class="fw-semibold mb-1 fs-18">
+                  2010 | Sunseeker Predator 60
+                </h3>
+                <div class="fs-14 text-gray-600 fw-semibold">
+                  2010
+                </div>
+                <div class="features-list mt-4 d-flex flex-wrap gap-3">
+                  <div class="d-flex align-items-center gap-2 me-4">
+                    <i class="fa fa-arrows-left-right text-primary"></i>
+                    <span class="fs-13 text-gray-700">                    Length: 19.92 m
+</span>
+                  </div>
+                  <div class="d-flex align-items-center gap-2 me-4">
+                    <i class="fa fa-bed text-primary"></i>
+                    <span class="fs-13 text-gray-700">                    Cabin : 3
+</span>
+                  </div>
+                </div>
+              </div>
+</a>
+            </div>
+            <div class="swiper-slide">
+              <a href="ilan/2006-azimut-98-leonardo-609" class="d-block bg-white p-2">              <div class="image overflow-hidden position-relative h-250px">
+                <div class="more-btn position-absolute end-0 bottom-0 w-50px h-50px d-flex align-items-center justify-content-center text-white bg-primary m-3">
+                  <i class="fa fa-chevron-right"></i>
+                </div>
+                <img src="https://cdn.istanbulyachting.com/resimler/resim-788371405065498.26" class="w-100 h-100 object-cover" />
+              </div>
+              <div class="px-2 py-3">
+                <h3 class="fw-semibold mb-1 fs-18">
+                  2006 | Azimut 98 Leonardo
+                </h3>
+                <div class="fs-14 text-gray-600 fw-semibold">
+                  2006
+                </div>
+                <div class="features-list mt-4 d-flex flex-wrap gap-3">
+                  <div class="d-flex align-items-center gap-2 me-4">
+                    <i class="fa fa-arrows-left-right text-primary"></i>
+                    <span class="fs-13 text-gray-700">                    Length: 29.87 m
+</span>
+                  </div>
+                  <div class="d-flex align-items-center gap-2 me-4">
+                    <i class="fa fa-bed text-primary"></i>
+                    <span class="fs-13 text-gray-700">                    Cabin : 4
+</span>
+                  </div>
+                </div>
+              </div>
+</a>
+            </div>
+          </div>
+          <div class="swiper-button-prev">
+          </div>
+          <div class="swiper-button-next">
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="yacht-search" class="py-lg-5 py-4 position-relative overflow-hidden">
+      <img src="https://cdn.istanbulyachting.com/assets/img/search-bg.jpg" class="position-absolute w-100 h-100 top-0 start-0 object-cover" data-aos="zoom-out" data-aos-delay="100" data-aos-duration="1500" />
+      <div class="position-absolute w-100 h-100 top-0 start-0 bg-primary bg-opacity-75">
+      </div>
+      <div class="container py-lg-5 position-relative">
+        <div class="main-title text-center text-white fs-3 fw-normal letter-spacing mb-lg-5 pb-lg-2 mb-4" data-aos="fade-down" data-aos-delay="100" data-aos-duration="1500">
+          DISCOVER ADVERTISEMENTS
+        </div>
+        <div class="row justify-content-center">
+          <div class="col-lg-5">
+            <form action="listele.php" method="GET" class="site-form" data-aos="fade-up" data-aos-delay="100" data-aos-duration="1500">
+              <div class="form-group mb-4 pb-2">
+                <select name="cat" id="cat" class="form-select border-0 border-bottom border-white bg-transparent text-white fs-18 rounded-0 form-select-lg px-0 text-center fw-normal shadow-none" required="">
+                  <option value="">
+                    CATEGORY
+                  </option>
+                  <option value="2">
+                    Kiralık
+                  </option>
+                  <option value="1">
+                    Satılık
+                  </option>
+                </select>
+              </div>
+              <div class="form-group mb-4 pb-2">
+                <select name="type" id="type" class="form-select border-0 border-bottom border-white bg-transparent text-white fs-18 rounded-0 form-select-lg px-0 text-center fw-normal shadow-none" required="">
+                  <option value="">
+                    YACHT TYPE
+                  </option>
+                  <option value="2">
+                    Motorlu
+                  </option>
+                  <option value="1">
+                    Yelkenli
+                  </option>
+                </select>
+              </div>
+              <div class="form-group mb-4 pb-2 text-center">
+                <div class="fs-18 fw-normal text-white">
+                  PRICE RANGE
+                </div>
+                <div id="site-price-range" class="mt-3 fs-18 fw-bold text-white">
+                </div>
+                <div id="site-price-slider" class="mt-4">
+                </div>
+              </div>
+              <div class="form-group mb-4 pb-2 text-center">
+                <div class="fs-18 fw-normal text-white">
+                  LENGTH
+                </div>
+                <div id="site-length-range" class="mt-3 fs-18 fw-bold text-white">
+                </div>
+                <div id="site-length-range-feet" class="mt-2 fs-16 text-white">
+                </div>
+                <div id="site-length-slider" class="mt-4">
+                </div>
+              </div>
+              <div class="row justify-content-center mt-5">
+                <div class="col-lg-6">
+                  <input type="hidden" id="site-price-range-input-1" name="minprice" />
+                  <input type="hidden" id="site-price-range-input-2" name="maxprice" />
+                  <input type="hidden" id="site-length-range-input-1" name="minlength" />
+                  <input type="hidden" id="site-length-range-input-2" name="maxlength" />
+                  <button type="submit" class="btn btn-light w-100 opacity-75 px-5 py-3 fw-semibold letter-spacing">
+                    <i class="fa fa-search me-2"></i>
+                    SEARCH
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="py-lg-5 py-4 position-relative mb-md-5">
+      <div class="container pt-md-5">
+        <div class="row align-items-md-center">
+          <div class="col-5">
+            <div class="about-title-text fs-40 fw-normal text-dark position-relative" data-aos="fade-up" data-aos-delay="100" data-aos-duration="1500">
+              We are a
+              <br />
+              professionally managed
+              <br />
+              <span class="fw-bold">              company
+</span>
+              .
+            </div>
+          </div>
+          <div class="col-7">
+            <div class="about-right-img" style="background-image:url(https://cdn.istanbulyachting.com/images/istanbul-yachting-1.png)" data-aos="fade-left" data-aos-delay="150" data-aos-duration="1500">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="about-background" style="background-image:url(https://cdn.istanbulyachting.com/images/istanbul-yachting-12.png)" data-aos="fade-right" data-aos-delay="100" data-aos-duration="1500">
+      </div>
+      <div class="container py-md-5 mb-md-4">
+        <div class="row">
+          <div class="col-md-5">
+          </div>
+          <div class="col-md-5">
+            <div class="about-text mt-4" data-aos="fade-up" data-aos-delay="150" data-aos-duration="1500">
+              <div class="about-title fs-18 fw-semibold text-secondary letter-spacing mb-4">
+                VISION and MISSION
+              </div>
+              <p class="text-gray-700 mb-4">
+                Istanbul Yachting is one of the leading yachting companies in the country. It has been providing reliable and quality yachting services for years. Our love for the sea was the beginning of our journey and went beyond the borders of this country. Our company meets all the needs of local and foreign tourists with hundreds of yachts for sale and rental. We make your dreams come true by offering affordable blue cruise packages for every budget.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <footer class="bg-primary py-lg-5 py-4">
+      <div class="footer-top">
+        <div class="container py-lg-4">
+          <div class="row g-4">
+            <div class="col-lg-4">
+              <div class="d-lg-flex d-none flex-column gap-3 text-lg-start text-center">
+                <a href="https://istanbulyachting.com/" class="d-block fs-16 fw-normal text-white hover-text-secondary">                Home page
+</a>
+                <a href="hakkimizda.php" class="d-block fs-16 fw-normal text-white hover-text-secondary">                About us
+</a>
+                <a href="hizmetler.php" class="d-block fs-16 fw-normal text-white hover-text-secondary">                Our services
+</a>
+                <a href="blog.php" class="d-block fs-16 fw-normal text-white hover-text-secondary">                Blog
+</a>
+                <a href="iletisim.php" class="d-block fs-16 fw-normal text-white hover-text-secondary">                Communication
+</a>
+              </div>
+            </div>
+            <div class="col-lg-4">
+              <a href="https://istanbulyachting.com/" class="logo text-center d-block">              <img src="https://cdn.istanbulyachting.com/assets/img/logo-white.png" class="h-125px" />
+</a>
+            </div>
+            <div class="col-lg-4">
+              <div class="d-flex flex-column gap-3 text-lg-end text-center mt-lg-0 mt-4">
+                <a href="https://maps.app.goo.gl/Nn32KKCt6trbss55A" target="_blank" class="d-block fs-15 text-white hover-text-secondary">                <i class="fa fa-map-marker-alt me-2"></i>
+                Yalıkavak Yalı iş Merkezi YALIKAVAK Mah. ÇÖKERTME Cad. NO:31/101 DR:1 KAT:2 BODRUM/ MUĞLA
+</a>
+                <a href="mailto:info@istanbulyachting.com" target="_blank" class="d-block fs-15 text-white hover-text-secondary">                <i class="fa fa-envelope me-2"></i>
+                info@istanbulyachting.com
+</a>
+                <a href="tel:+90 252 385 34 22" target="_blank" class="d-block fs-15 text-white hover-text-secondary">                <i class="fa fa-phone me-2"></i>
+                <span class="fw-semibold">                Ofis
+</span>
+                +90 252 385 34 22
+</a>
+                <a href="tel:+90 532 693 40 48" target="_blank" class="d-block fs-15 text-white hover-text-secondary">                <i class="fa fa-phone me-2"></i>
+                <span class="fw-semibold">                Gsm
+</span>
+                +90 532 693 40 48
+</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom mt-5 border-top border-white border-opacity-10 pt-lg-5 pt-4">
+        <div class="container d-flex flex-md-row flex-column align-items-center justify-content-between">
+          <p class="text-white fs-14">
+            2023 © İstanbul Yachting
+          </p>
+          <div class="d-flex align-items-center text-center gap-4 mt-md-0 mt-3">
+            <a href="https://www.facebook.com/istanbulyachting" target="_blank" class="d-block hover-scale text-white hover-text-secondary">            <i class="fab fa-facebook-f"></i>
+</a>
+            <a href="https://twitter.com/istanbulyacht" target="_blank" class="d-block hover-scale text-white hover-text-secondary">            <i class="fab fa-twitter"></i>
+</a>
+            <a href="https://www.instagram.com/istanbulyachtingofficial" target="_blank" class="d-block hover-scale text-white hover-text-secondary">            <i class="fab fa-instagram"></i>
+</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <script src="assets/js/jquery-3.6.1.min.js">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js">
+    </script>
+    <script src="assets/js/bootstrap.min.js">
+    </script>
+    <script src="assets/js/fancybox.js">
+    </script>
+    <script src="assets/js/aos.js">
+    </script>
+    <script src="assets/js/main.js">
+    </script>
+    <script src="assets/js/swiper-bundle.min.js">
+    </script>
+    <script>
+      var swiper = new Swiper(&#34;.hero-list&#34;, {
+        spaceBetween: 0,
+        slidesPerView: 1,
+        speed: 800,
+        loop: true,
+        autoplay: false,
+        freeMode: true,
+        watchSlidesProgress: true,
+        navigation: {
+            nextEl: &#39;.swiper-button-next&#39;,
+            prevEl: &#39;.swiper-button-prev&#39;,
+        },
+    });
+    var swiper = new Swiper(&#34;.listing&#34;, {
+        speed: 800,
+        loop: true,
+        autoplay: false,
+        freeMode: true,
+        watchSlidesProgress: true,
+        breakpoints: {
+            640: {
+                slidesPerView: 1,
+                spaceBetween: 10,
+                autoplay: true,
+            },
+            768: {
+                slidesPerView: 2,
+                spaceBetween: 20,
+                autoplay: true,
+            },
+            1024: {
+                slidesPerView: 3,
+                spaceBetween: 40,
+            },
+        },
+        navigation: {
+            nextEl: &#39;.swiper-button-next&#39;,
+            prevEl: &#39;.swiper-button-prev&#39;,
+        },
+    });
+    </script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js">
+    </script>
+    <script>
+      $(&#34;#site-price-slider&#34;).slider({
+        range: true,
+        min: 5000,
+        max: 50000000,
+        values: [5000, 50000000],
+        slide: function (event, ui) {
+            console.log(ui)
+            $(&#34;#site-price-range&#34;).text(&#34;€&#34; + ui.values[0] + &#34; - €&#34; + ui.values[1]);
+            $(&#34;#site-price-range-input&#34;).val(&#34;€&#34; + ui.values[0] + &#34; - €&#34; + ui.values[1]);
 
-  <!-- محتوى رئيسي -->
-  <main class="container">
-    <h2>About the yacht</h2>
-    <p>Premium yacht reviews and tailored sales assistance. Share your details—we’ll align the right yacht to your needs.</p>
-  </main>
+            $(&#34;#site-price-range-input-1&#34;).val(ui.values[0]);
+            $(&#34;#site-price-range-input-2&#34;).val(ui.values[1]);
 
-  <!-- Footer -->
-  <footer>
-    <p>&copy; 2025 Barbour Yachting. All rights reserved.</p>
-    <p>
-      <a href="#">Facebook</a> |
-      <a href="#">Twitter</a> |
-      <a href="#">Instagram</a>
-    </p>
-  </footer>
+        }
+    });
 
-</body>
+    $(&#34;#site-price-range&#34;).text(&#34;€&#34; + $(&#34;#site-price-slider&#34;).slider(&#34;values&#34;, 0) + &#34; - €&#34; + $(&#34;#site-price-slider&#34;).slider(&#34;values&#34;, 1));
+
+    $(&#34;#site-length-slider&#34;).slider({
+        range: !0,
+        min: 21,
+        max: 300,
+        step: 1,
+        values: [21, 300],
+        slide: function (n, t) {
+
+            $(&#34;#site-length-range&#34;).html(Number(t.values[0]).toLocaleString(&#34;en&#34;) + &#34;m - &#34; + Number(t.values[1]).toLocaleString(&#34;en&#34;) + &#34;m&#34;);
+            $(&#34;#site-length-range-feet&#34;).html(Math.round(Number(t.values[0] * 3.28084)).toLocaleString(&#34;en&#34;) + &#34;ft - &#34; + Math.round(Number(t.values[1] * 3.28084)).toLocaleString(&#34;en&#34;) + &#34;ft&#34;);
+
+            $(&#34;#site-length-range-input-1&#34;).val(t.values[0]);
+            $(&#34;#site-length-range-input-2&#34;).val(t.values[1]);
+
+        }
+    });
+
+    $(&#34;#site-length-range&#34;).html(Number($(&#34;#site-length-slider&#34;).slider(&#34;values&#34;, 0)).toLocaleString(&#34;en&#34;) + &#34;m - &#34; + Number($(&#34;#site-length-slider&#34;).slider(&#34;values&#34;, 1)).toLocaleString(&#34;en&#34;) + &#34;m&#34;);
+
+    $(&#34;#site-length-range-feet&#34;).html(Math.round(Number($(&#34;#site-length-slider&#34;).slider(&#34;values&#34;, 0) * 3.28084)).toLocaleString(&#34;en&#34;) + &#34;ft - &#34; + Math.round(Number($(&#34;#site-length-slider&#34;).slider(&#34;values&#34;, 1) * 3.28084)).toLocaleString(&#34;en&#34;) + &#34;ft&#34;);
+    </script>
+  </body>
 </html>
