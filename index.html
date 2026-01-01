@@ -4,12 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Barbour Yachting | The Finest Name in Superyachts</title>
+    <meta name="description" content="Barbour Yachting offers the finest selection of superyachts for sale and charter worldwide.">
+    <meta name="keywords" content="Luxury Yachts, Superyacht Charter, Yacht Sales, Barbour Yachting">
     
     <link rel="icon" type="image/jpeg" href="barbour.jpeg">
 
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@100;200;300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     
     <style>
         :root { --fraser-navy: #000b1e; --fraser-red: #c02b2d; --fraser-gold: #b39359; --fraser-text: #1a1a1a; }
@@ -37,7 +40,8 @@
         .f-red { width: 50%; height: 100%; background: var(--fraser-red); }
 
         /* --- YACHT CARD --- */
-        .yacht-slider-card { background: #fff; text-align: center; }
+        .yacht-slider-card { background: #fff; text-align: center; transition: 0.4s; }
+        .yacht-slider-card:hover { transform: translateY(-10px); }
         .yacht-img-box { width: 100%; height: 280px; overflow: hidden; position: relative; }
         .yacht-img-box img { width: 100%; height: 100%; object-fit: cover; }
         .specs-grid { display: grid; grid-template-cols: repeat(4, 1fr); border-top: 1px solid #eee; border-bottom: 1px solid #eee; margin: 15px 0; padding: 12px 0; }
@@ -64,6 +68,10 @@
         .btn-glass { border: 1px solid white; padding: 15px 45px; text-transform: uppercase; letter-spacing: 2px; font-size: 10px; color: white; margin-top: 25px; transition: 0.3s; background: rgba(0,0,0,0.1); font-weight: 700; }
         .btn-glass:hover { background: white; color: black; }
 
+        /* زر الواتساب الطائر */
+        .whatsapp-float { position: fixed; bottom: 30px; right: 30px; background-color: #25d366; color: #FFF; border-radius: 50px; text-align: center; font-size: 30px; box-shadow: 2px 2px 3px #999; z-index: 3000; width: 60px; height: 60px; display: flex; align-items: center; justify-content: center; transition: 0.3s; }
+        .whatsapp-float:hover { transform: scale(1.1); background-color: #128c7e; }
+
         .swiper-pagination-progressbar { background: #eee !important; height: 2px !important; }
         .swiper-pagination-progressbar-fill { background: var(--fraser-navy) !important; }
 
@@ -76,13 +84,20 @@
 
     <div id="loader"><div class="loader-content serif italic">BARBOUR</div></div>
 
+    <a href="https://wa.me/96100000000" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
     <header class="top-bar">
         <div class="flex items-center space-x-8">
             <div class="cursor-pointer"><div class="w-8 h-[1px] bg-white mb-2"></div><div class="w-5 h-[1px] bg-white"></div></div>
             <svg class="w-5 h-5 fill-white" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
         </div>
         <div class="logo text-white text-xl md:text-3xl tracking-[0.4em] serif italic">BARBOUR</div>
-        <div class="hidden md:flex space-x-8"><span class="text-white text-[10px] tracking-widest border-b border-gold">EN</span></div>
+        <div class="hidden md:flex space-x-8 text-white text-[10px] tracking-widest uppercase">
+            <a href="#yacht-section" class="hover:text-red-500">Fleet</a>
+            <a href="#contact" class="hover:text-red-500">Contact</a>
+        </div>
         <div class="red-line"></div>
     </header>
 
@@ -91,7 +106,7 @@
         <div class="video-text absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10 text-white text-center w-full"><h2 class="serif italic">First & Foremost</h2></div>
     </section>
 
-    <section class="py-24 bg-white reveal">
+    <section id="yacht-section" class="py-24 bg-white reveal">
         <div class="text-center mb-10">
             <span class="text-[11px] tracking-[5px] uppercase text-gray-400">First Choice</span>
             <div class="fraser-line"><div class="f-navy"></div><div class="f-red"></div></div>
@@ -106,10 +121,15 @@
             <div id="yacht-wrapper" class="swiper-wrapper"></div>
             <div class="swiper-pagination !static mt-12"></div>
         </div>
+    </section>
 
-        <div class="text-center mt-16">
-            <button class="border-2 border-black px-12 py-4 text-[11px] uppercase tracking-[3px]">More Yachts For Sale</button>
-        </div>
+    <section class="py-20 bg-gray-50 text-center reveal border-y border-gray-100">
+        <h3 class="serif text-2xl uppercase tracking-widest mb-4">Stay Informed</h3>
+        <p class="text-gray-500 text-sm mb-8 font-light italic">Receive the latest news from the world of superyachts.</p>
+        <form action="https://formspree.io/f/mbdldvke" method="POST" class="max-w-md mx-auto px-4 flex">
+            <input type="email" name="email" required placeholder="YOUR EMAIL ADDRESS" class="w-full border border-gray-300 p-4 text-[10px] tracking-widest outline-none focus:border-black">
+            <button type="submit" class="bg-black text-white px-8 text-[10px] tracking-widest uppercase hover:bg-red-700 transition">Subscribe</button>
+        </form>
     </section>
 
     <section class="py-20 bg-white text-center reveal">
@@ -177,7 +197,7 @@
         </div>
     </section>
 
-    <section class="py-20 bg-[#fbfbfb] text-center reveal border-t border-gray-100">
+    <section id="contact" class="py-20 bg-[#fbfbfb] text-center reveal border-t border-gray-100">
         <span class="text-[11px] tracking-[5px] text-gray-400 uppercase">Global Partnerships</span>
         <div class="fraser-line"><div class="f-navy"></div><div class="f-red"></div></div>
         <h2 class="serif text-3xl uppercase mb-6">Business Inquiries</h2>
@@ -191,7 +211,11 @@
 
     <footer class="bg-white py-16 text-center border-t border-gray-100">
         <div class="logo serif italic text-3xl mb-4">BARBOUR</div>
-        <p class="text-[9px] tracking-widest text-gray-400 uppercase">© 2026 BARBOUR YACHTING</p>
+        <div class="flex justify-center space-x-6 mb-8 text-gray-400">
+            <a href="https://instagram.com" class="hover:text-black transition text-xl"><i class="fab fa-instagram"></i></a>
+            <a href="mailto:barbouryachting@gmail.com" class="hover:text-black transition text-xl"><i class="far fa-envelope"></i></a>
+        </div>
+        <p class="text-[9px] tracking-widest text-gray-400 uppercase">© 2026 BARBOUR YACHTING | ALL RIGHTS RESERVED</p>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
