@@ -126,8 +126,8 @@
     <section class="py-20 bg-gray-50 text-center reveal border-y border-gray-100">
         <h3 class="serif text-2xl uppercase tracking-widest mb-4">Stay Informed</h3>
         <p class="text-gray-500 text-sm mb-8 font-light italic">Receive the latest news from the world of superyachts.</p>
-        <form action="https://formspree.io/f/mbdldvke" method="POST" class="max-w-md mx-auto px-4 flex">
-            <input type="email" name="email" required placeholder="YOUR EMAIL ADDRESS" class="w-full border border-gray-300 p-4 text-[10px] tracking-widest outline-none focus:border-black">
+        <form id="contact-form" class="max-w-md mx-auto px-4 flex">
+            <input type="email" name="email" id="user_email" required placeholder="YOUR EMAIL ADDRESS" class="w-full border border-gray-300 p-4 text-[10px] tracking-widest outline-none focus:border-black">
             <button type="submit" class="bg-black text-white px-8 text-[10px] tracking-widest uppercase hover:bg-red-700 transition">Subscribe</button>
         </form>
     </section>
@@ -220,7 +220,33 @@
 
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="https://www.youtube.com/iframe_api"></script>
+    
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+
     <script>
+        // تفعيل نظام EmailJS باستخدام الـ Public Key الخاص بك
+        (function(){
+            emailjs.init("JQEVLuqKBnOlfMpCI");
+        })();
+
+        // التحكم بإرسال الفورم
+        document.getElementById('contact-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            // الرموز التي استخرجناها من حسابك
+            const serviceID = 'service_hin0mib';
+            const templateID = 'template_v8m72ha'; // تأكد أن هذا هو الـ ID لقالب "Contact Us" الأساسي
+
+            emailjs.sendForm(serviceID, templateID, this)
+                .then(function() {
+                    alert('Success! Thank you for subscribing. Check your email for a confirmation.');
+                    document.getElementById('contact-form').reset();
+                }, function(error) {
+                    alert('Failed to send. Please try again later.');
+                });
+        });
+
+        // باقي أكواد الموقع البرمجية (اليخوت، الفيديو، السلايدر)
         const yachtData = {
             charter: [
                 { img: 'lioness V.webp', name: 'Lioness V', year: 'Benetti - 2006 (2018)', len: '63m', guests: '12', cabins: '6', crew: '19', price: 'From €425,000 P/Week' },
