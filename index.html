@@ -9,56 +9,37 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@100;200;300;400;500;600;700&display=swap" rel="stylesheet">
     
     <style>
-        :root {
-            --fraser-navy: #000b1e;
-            --fraser-red: #c02b2d;
-            --fraser-gold: #b39359;
-            --fraser-text: #1a1a1a;
-            --f-gray: #f8f8f8;
-        }
-
+        :root { --fraser-navy: #000b1e; --fraser-red: #c02b2d; --fraser-gold: #b39359; --fraser-text: #1a1a1a; }
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: 'Montserrat', sans-serif; background: #fff; color: var(--fraser-text); overflow-x: hidden; }
         .serif { font-family: 'Playfair Display', serif; }
 
         /* --- PRELOADER --- */
-        #loader { position: fixed; inset: 0; background: var(--fraser-navy); z-index: 9999; display: flex; justify-content: center; align-items: center; transition: 0.8s ease-in-out; }
-        .loader-content { color: white; letter-spacing: 10px; font-weight: 200; animation: pulse 2s infinite; }
+        #loader { position: fixed; inset: 0; background: var(--fraser-navy); z-index: 9999; display: flex; justify-content: center; align-items: center; transition: 0.8s; }
+        /* تغيير اللون إلى الأبيض هنا */
+        .loader-content { color: #ffffff !important; letter-spacing: 10px; font-weight: 200; animation: pulse 2s infinite; }
 
-        /* --- NAV BAR --- */
-        header.top-bar {
-            background-color: var(--fraser-navy);
-            height: 90px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0 60px;
-            position: fixed;
-            top: 0; width: 100%;
-            z-index: 2000;
-        }
+        header.top-bar { background-color: var(--fraser-navy); height: 90px; display: flex; align-items: center; justify-content: space-between; padding: 0 60px; position: fixed; top: 0; width: 100%; z-index: 2000; }
         .red-line { height: 4px; background-color: var(--fraser-red); width: 100%; position: absolute; bottom: -4px; left: 0; z-index: 2001; }
-
+        
         /* --- HERO --- */
         .hero-section { position: relative; width: 100%; height: 100vh; overflow: hidden; background: #000; }
         .video-background { position: absolute; top: 50%; left: 50%; width: 100vw; height: 56.25vw; min-height: 100vh; min-width: 177.77vh; transform: translate(-50%, -50%); pointer-events: none; }
         #player { width: 100%; height: 100%; }
-        .hero-overlay { position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(0,0,0,0.3) 0%, transparent 100%); z-index: 5; }
-        .video-text { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 10; color: white; text-align: center; width: 100%; }
         .video-text h2 { font-size: clamp(2rem, 6vw, 4.5rem); letter-spacing: 0.5em; text-transform: uppercase; font-weight: 300; }
 
         /* --- SIDE MENU --- */
-        #side-menu { position: fixed; top: 0; left: -100%; width: 400px; height: 100vh; background: var(--fraser-navy); z-index: 3000; transition: 0.7s cubic-bezier(0.7, 0, 0.3, 1); padding: 80px 50px; color: white; }
+        #side-menu { position: fixed; top: 0; left: -100%; width: 400px; height: 100vh; background: var(--fraser-navy); z-index: 3000; transition: 0.7s; padding: 80px 50px; color: white; }
         #side-menu.open { left: 0; }
-        .menu-link { display: block; font-size: 2rem; margin-bottom: 30px; transition: 0.3s; opacity: 0.7; }
-        .menu-link:hover { opacity: 1; padding-left: 15px; color: var(--fraser-gold); }
+        .menu-link { display: block; font-size: 2rem; margin-bottom: 30px; opacity: 0.7; transition: 0.3s; }
+        .menu-link:hover { opacity: 1; color: var(--fraser-gold); padding-left: 10px; }
 
-        /* --- FRASER STYLE DECORATION --- */
+        /* --- DECORATION --- */
         .line-decorator { width: 80px; height: 3px; margin: 20px auto; display: flex; }
         .line-black { width: 50%; height: 100%; background: #000b1e; }
         .line-red { width: 50%; height: 100%; background: var(--fraser-red); }
 
-        /* --- YACHT SLIDER CARD --- */
+        /* --- YACHT CARD --- */
         .yacht-slider-card { background: #fff; text-align: center; }
         .yacht-img-box { width: 100%; height: 280px; overflow: hidden; }
         .yacht-img-box img { width: 100%; height: 100%; object-fit: cover; }
@@ -66,17 +47,22 @@
         .spec-val { font-size: 13px; font-weight: 700; display: block; }
         .spec-label { font-size: 9px; text-transform: uppercase; color: #999; letter-spacing: 1px; }
         .price-strip { background: #f8f8f8; padding: 12px; font-size: 11px; letter-spacing: 1px; color: #333; }
+        .tab-btn.active { background: #000b1e; color: white; }
 
-        /* --- WIDE SECTION CARD --- */
-        .wide-card { position: relative; width: 100%; height: 500px; overflow: hidden; display: flex; align-items: center; justify-content: center; }
-        .wide-card img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; filter: brightness(0.7); }
-        .btn-glass { border: 1px solid white; padding: 15px 40px; text-transform: uppercase; letter-spacing: 2px; font-size: 10px; color: white; margin-top: 25px; transition: 0.3s; }
+        /* --- FRASER STYLE WIDE SLIDERS --- */
+        .wide-slide { position: relative; height: 550px; overflow: hidden; }
+        .wide-slide img { width: 100%; height: 100%; object-fit: cover; filter: brightness(0.8); }
+        .wide-content { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; color: white; z-index: 10; text-align: center; }
+        .btn-glass { border: 1px solid white; padding: 15px 40px; text-transform: uppercase; letter-spacing: 2px; font-size: 10px; color: white; margin-top: 25px; transition: 0.3s; background: rgba(0,0,0,0.1); backdrop-filter: blur(5px); }
         .btn-glass:hover { background: white; color: black; }
+
+        /* --- NAV BUTTONS --- */
+        .nav-btn { position: absolute; top: 50%; transform: translateY(-50%); width: 50px; height: 50px; border: 1px solid rgba(255,255,255,0.4); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; z-index: 30; cursor: pointer; transition: 0.3s; }
+        .nav-btn:hover { background: white; color: black; }
 
         .reveal { opacity: 0; transform: translateY(30px); transition: 1s ease; }
         .reveal.active { opacity: 1; transform: translateY(0); }
-
-        @keyframes pulse { 0% { opacity: 0.5; } 50% { opacity: 1; } 100% { opacity: 0.5; } }
+        @keyframes pulse { 0%, 100% { opacity: 0.5; } 50% { opacity: 1; } }
     </style>
 </head>
 <body class="pt-[90px]">
@@ -86,31 +72,25 @@
     <div id="side-menu">
         <button onclick="toggleMenu()" class="text-gold uppercase tracking-widest text-xs mb-20">Close [X]</button>
         <nav class="serif italic">
-            <a href="#sales" class="menu-link" onclick="toggleMenu()">Yachts for Sale</a>
-            <a href="#charter" class="menu-link" onclick="toggleMenu()">Yacht Charter</a>
-            <a href="#contact" class="menu-link" onclick="toggleMenu()">Contact</a>
+            <a href="javascript:switchYachts('sale')" class="menu-link" onclick="toggleMenu()">Yachts for Sale</a>
+            <a href="javascript:switchYachts('charter')" class="menu-link" onclick="toggleMenu()">Yacht Charter</a>
+            <a href="#" class="menu-link">Contact</a>
         </nav>
     </div>
 
     <header class="top-bar">
         <div class="flex items-center space-x-8">
-            <div onclick="toggleMenu()" class="cursor-pointer group">
-                <div class="w-8 h-[1px] bg-white mb-2"></div>
-                <div class="w-5 h-[1px] bg-white"></div>
-            </div>
+            <div onclick="toggleMenu()" class="cursor-pointer"><div class="w-8 h-[1px] bg-white mb-2"></div><div class="w-5 h-[1px] bg-white"></div></div>
             <svg class="w-5 h-5 fill-white" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
         </div>
         <div class="logo text-white text-xl md:text-3xl tracking-[0.4em] serif italic font-bold">BARBOUR</div>
-        <div class="hidden md:flex items-center space-x-8">
-            <span class="text-white text-[10px] tracking-widest border-b border-gold font-bold">EN</span>
-        </div>
+        <div class="hidden md:flex space-x-8"><span class="text-white text-[10px] tracking-widest border-b border-gold font-bold">EN</span></div>
         <div class="red-line"></div>
     </header>
 
     <section class="hero-section">
         <div class="video-background"><div id="player"></div></div>
-        <div class="hero-overlay"></div>
-        <div class="video-text"><h2 class="serif italic">First & Foremost</h2></div>
+        <div class="video-text absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10 text-white text-center w-full"><h2 class="serif italic">First & Foremost</h2></div>
     </section>
 
     <section class="py-24 bg-white reveal">
@@ -118,46 +98,14 @@
             <span class="text-[11px] tracking-[5px] uppercase text-gray-400">First Choice</span>
             <div class="line-decorator"><div class="line-black"></div><div class="line-red"></div></div>
             <div class="flex justify-center space-x-4 mt-8 mb-16">
-                <button class="bg-[#000b1e] text-white px-8 py-3 text-[10px] tracking-widest uppercase">Yachts for Charter</button>
-                <button class="border border-black px-8 py-3 text-[10px] tracking-widest uppercase">Yachts for Sale</button>
+                <button id="btn-charter" onclick="switchYachts('charter')" class="tab-btn active border border-black px-8 py-3 text-[10px] uppercase">Yachts for Charter</button>
+                <button id="btn-sale" onclick="switchYachts('sale')" class="tab-btn border border-black px-8 py-3 text-[10px] uppercase">Yachts for Sale</button>
             </div>
         </div>
 
         <div class="swiper yachtSwiper px-10">
-            <div class="swiper-wrapper">
-                <div class="swiper-slide">
-                    <div class="yacht-slider-card">
-                        <div class="yacht-img-box"><img src="sunseker.png"></div>
-                        <h3 class="serif text-2xl uppercase mt-6 tracking-widest">Carinthia VII</h3>
-                        <p class="text-[10px] text-gray-400 uppercase tracking-widest mt-1">Lürssen - 2002 (2023)</p>
-                        <div class="specs-grid mx-4">
-                            <div class="spec-item"><span class="spec-val">97m</span><span class="spec-label">Length</span></div>
-                            <div class="spec-item"><span class="spec-val">12</span><span class="spec-label">Guests</span></div>
-                            <div class="spec-item"><span class="spec-val">8</span><span class="spec-label">Cabins</span></div>
-                            <div class="spec-item"><span class="spec-val">33</span><span class="spec-label">Crew</span></div>
-                        </div>
-                        <div class="price-strip uppercase mx-4">From <strong>€1,500,000</strong> P/Week</div>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="yacht-slider-card">
-                        <div class="yacht-img-box"><img src="azimut.png"></div>
-                        <h3 class="serif text-2xl uppercase mt-6 tracking-widest">Cloud 9</h3>
-                        <p class="text-[10px] text-gray-400 uppercase tracking-widest mt-1">Sanlorenzo - 2021</p>
-                        <div class="specs-grid mx-4">
-                            <div class="spec-item"><span class="spec-val">62m</span><span class="spec-label">Length</span></div>
-                            <div class="spec-item"><span class="spec-val">12</span><span class="spec-label">Guests</span></div>
-                            <div class="spec-item"><span class="spec-val">6</span><span class="spec-label">Cabins</span></div>
-                            <div class="spec-item"><span class="spec-val">15</span><span class="spec-label">Crew</span></div>
-                        </div>
-                        <div class="price-strip uppercase mx-4">From <strong>€500,000</strong> P/Week</div>
-                    </div>
-                </div>
-            </div>
+            <div id="yacht-wrapper" class="swiper-wrapper"></div>
             <div class="swiper-pagination mt-10"></div>
-        </div>
-        <div class="text-center mt-12">
-            <button class="border border-black px-10 py-3 text-[10px] uppercase tracking-widest">More Yachts for Charter</button>
         </div>
     </section>
 
@@ -165,74 +113,140 @@
         <span class="text-[11px] tracking-[4px] text-gray-400 uppercase">First Class Yachts in the Finest Destinations</span>
         <div class="line-decorator"><div class="line-black"></div><div class="line-red"></div></div>
         <h2 class="serif text-4xl md:text-5xl uppercase mb-16">Experience The Ultimate Vacation</h2>
-        <div class="wide-card">
-            <img src="https://images.unsplash.com/photo-1567899378494-47b22a2896ad?w=1600">
-            <div class="relative z-10 text-white">
-                <h4 class="serif text-4xl italic uppercase tracking-widest">What To Do</h4>
-                <button class="btn-glass">Charter with Barbour</button>
+        
+        <div class="relative">
+            <div class="swiper experienceSwiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide wide-slide">
+                        <img src="experience1.webp"> <div class="wide-content">
+                            <h4 class="serif text-5xl italic uppercase">What To Do</h4>
+                            <button class="btn-glass">Charter with Barbour</button>
+                        </div>
+                    </div>
+                    <div class="swiper-slide wide-slide">
+                        <img src="experience2.webp"> <div class="wide-content">
+                            <h4 class="serif text-5xl italic uppercase">Where To Go</h4>
+                            <button class="btn-glass">Explore Destinations</button>
+                        </div>
+                    </div>
+                </div>
             </div>
+            <div class="nav-btn left-[30px]" id="exp-prev">❮</div>
+            <div class="nav-btn right-[30px]" id="exp-next">❯</div>
         </div>
     </section>
 
     <section class="py-20 bg-white text-center reveal">
-        <span class="text-[11px] tracking-[4px] text-gray-400 uppercase">The World's Leading Yacht Brokerage Company</span>
+        <span class="text-[11px] tracking-[4px] text-gray-400 uppercase">Trusted Yacht Brokerage</span>
         <div class="line-decorator"><div class="line-black"></div><div class="line-red"></div></div>
-        <h2 class="serif text-4xl md:text-5xl uppercase mb-16">The Best Investment You'll Ever Make</h2>
-        <div class="wide-card">
-            <img src="https://images.unsplash.com/photo-1544473244-f6895a69ad41?w=1600">
-            <div class="relative z-10 text-white">
-                <h4 class="serif text-4xl italic uppercase tracking-widest">Trusted Advisors</h4>
-                <button class="btn-glass">Buy with Barbour</button>
+        <h2 class="serif text-4xl md:text-5xl uppercase mb-16">The Best Investment</h2>
+        
+        <div class="relative">
+            <div class="swiper investmentSwiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide wide-slide">
+                        <img src="investment1.jpg"> <div class="wide-content">
+                            <h4 class="serif text-5xl italic uppercase">Trusted Advisors</h4>
+                            <button class="btn-glass">Buy with Barbour</button>
+                        </div>
+                    </div>
+                    <div class="swiper-slide wide-slide">
+                        <img src="investment2.jpg"> <div class="wide-content">
+                            <h4 class="serif text-5xl italic uppercase">Market Leaders</h4>
+                            <button class="btn-glass">Sell with Barbour</button>
+                        </div>
+                    </div>
+                </div>
             </div>
+            <div class="nav-btn left-[30px]" id="inv-prev">❮</div>
+            <div class="nav-btn right-[30px]" id="inv-next">❯</div>
         </div>
     </section>
 
-    <footer class="bg-white pt-24 pb-12 px-10 border-t border-gray-100">
-        <div class="flex flex-col md:flex-row justify-between items-start mb-20 gap-16">
-            <div class="logo serif italic text-3xl font-bold text-navy-900">BARBOUR</div>
-            <div class="grid grid-cols-2 md:grid-cols-3 gap-16 uppercase text-[10px] tracking-widest">
-                <div><h6 class="font-bold mb-8">Service</h6><ul class="space-y-4 text-gray-400"><li>Buy</li><li>Charter</li><li>Sell</li></ul></div>
-                <div><h6 class="font-bold mb-8">Company</h6><ul class="space-y-4 text-gray-400"><li>Our Story</li><li>Contact</li></ul></div>
-            </div>
-        </div>
-        <div class="pt-10 border-t border-gray-50 text-[9px] tracking-[4px] text-gray-300 uppercase">© 2026 BARBOUR YACHTING</div>
+    <footer class="bg-white py-12 text-center border-t border-gray-100">
+        <div class="logo serif italic text-3xl font-bold mb-4">BARBOUR</div>
+        <p class="text-[9px] tracking-widest text-gray-400 uppercase">© 2026 BARBOUR YACHTING</p>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="https://www.youtube.com/iframe_api"></script>
     <script>
-        // Swiper Init
-        var swiper = new Swiper(".yachtSwiper", {
-            slidesPerView: 1, spaceBetween: 20, grabCursor: true,
-            pagination: { el: ".swiper-pagination", type: "progressbar" },
-            breakpoints: { 768: { slidesPerView: 2 }, 1024: { slidesPerView: 3 } }
-        });
+        // دمج صورك الـ 5 مع بيانات Fraser فخمة
+        const yachtData = {
+            charter: [
+                { img: 'lioness V.webp', name: 'Lioness V', year: 'Benetti - 2006 (2018)', len: '63m', guests: '12', cabins: '6', crew: '19', price: 'From €425,000 P/Week' },
+                { img: 'Lurssen.jpg', name: 'Madsummer', year: 'Lürssen - 2019', len: '95m', guests: '12', cabins: '10', crew: '30', price: 'From €1,600,000 P/Week' }
+            ],
+            sale: [
+                { img: 'AzimutGrand105.jpg', name: 'Azimut Grande 105', year: 'Azimut - 2022', len: '32m', guests: '10', cabins: '5', crew: '5', price: 'Price: €8,900,000' },
+                { img: 'Ferretti860.jpeg', name: 'Ferretti 860', year: 'Ferretti - 2023', len: '26m', guests: '8', cabins: '4', crew: '3', price: 'Price: €5,400,000' },
+                { img: 'Lurssen.jpg', name: 'Lürssen Project', year: 'Lürssen - 2021', len: '85m', guests: '14', cabins: '7', crew: '25', price: 'Price: Upon Request' },
+                { img: 'lioness V.webp', name: 'Lioness V', year: 'Benetti - 2006', len: '63m', guests: '12', cabins: '6', crew: '19', price: 'Price: €45,000,000' },
+                { img: 'sunseeker.jpg', name: 'Sunseeker 95', year: 'Sunseeker - 2024', len: '28m', guests: '10', cabins: '5', crew: '4', price: 'Price: €7,200,000' }
+            ]
+        };
 
-        // YouTube
-        var player;
-        function onYouTubeIframeAPIReady() {
-            player = new YT.Player('player', {
-                videoId: 'ok-M1yyss2U',
-                playerVars: { 'autoplay': 1, 'controls': 0, 'showinfo': 0, 'rel': 0, 'loop': 1, 'mute': 1, 'start': 42, 'playlist': 'ok-M1yyss2U' },
-                events: { 'onReady': (e) => e.target.playVideo() }
+        let yachtSwiper;
+        function switchYachts(type) {
+            const wrapper = document.getElementById('yacht-wrapper');
+            document.getElementById('btn-charter').classList.toggle('active', type === 'charter');
+            document.getElementById('btn-sale').classList.toggle('active', type === 'sale');
+
+            wrapper.innerHTML = yachtData[type].map(y => `
+                <div class="swiper-slide">
+                    <div class="yacht-slider-card">
+                        <div class="yacht-img-box"><img src="${y.img}"></div>
+                        <h3 class="serif text-2xl uppercase mt-6 tracking-widest">${y.name}</h3>
+                        <p class="text-[10px] text-gray-400 uppercase mt-1">${y.year}</p>
+                        <div class="specs-grid mx-4">
+                            <div class="spec-item"><span class="spec-val">${y.len}</span><span class="spec-label">Length</span></div>
+                            <div class="spec-item"><span class="spec-val">${y.guests}</span><span class="spec-label">Guests</span></div>
+                            <div class="spec-item"><span class="spec-val">${y.cabins}</span><span class="spec-label">Cabins</span></div>
+                            <div class="spec-item"><span class="spec-val">${y.crew}</span><span class="spec-label">Crew</span></div>
+                        </div>
+                        <div class="price-strip uppercase mx-4"><strong>${y.price}</strong></div>
+                    </div>
+                </div>
+            `).join('');
+
+            if(yachtSwiper) yachtSwiper.destroy();
+            yachtSwiper = new Swiper(".yachtSwiper", {
+                slidesPerView: 1, spaceBetween: 20,
+                pagination: { el: ".swiper-pagination", type: "progressbar" },
+                breakpoints: { 768: { slidesPerView: 2 }, 1024: { slidesPerView: 3 } }
             });
         }
 
-        // UI Logic
+        new Swiper(".experienceSwiper", {
+            slidesPerView: 1.1, centeredSlides: true, spaceBetween: 20, loop: true,
+            navigation: { nextEl: "#exp-next", prevEl: "#exp-prev" },
+            breakpoints: { 1024: { slidesPerView: 1.2 } }
+        });
+
+        new Swiper(".investmentSwiper", {
+            slidesPerView: 1.1, centeredSlides: true, spaceBetween: 20, loop: true,
+            navigation: { nextEl: "#inv-next", prevEl: "#inv-prev" },
+            breakpoints: { 1024: { slidesPerView: 1.2 } }
+        });
+
+        function onYouTubeIframeAPIReady() {
+            new YT.Player('player', {
+                videoId: 'ok-M1yyss2U',
+                playerVars: { 'autoplay': 1, 'controls': 0, 'mute': 1, 'loop': 1, 'playlist': 'ok-M1yyss2U' },
+            });
+        }
+
         window.addEventListener('load', () => {
-            setTimeout(() => { document.getElementById('loader').style.opacity = '0'; setTimeout(() => document.getElementById('loader').style.display = 'none', 800); }, 1000);
+            switchYachts('charter');
+            setTimeout(() => { 
+                document.getElementById('loader').style.opacity = '0';
+                setTimeout(() => document.getElementById('loader').style.display = 'none', 800);
+            }, 1000);
         });
 
         function toggleMenu() { document.getElementById('side-menu').classList.toggle('open'); }
-
-        function reveal() {
-            var reveals = document.querySelectorAll(".reveal");
-            reveals.forEach(r => {
-                if (r.getBoundingClientRect().top < window.innerHeight - 100) r.classList.add("active");
-            });
-        }
-        window.addEventListener("scroll", reveal);
-        reveal();
+        function reveal() { document.querySelectorAll(".reveal").forEach(r => { if (r.getBoundingClientRect().top < window.innerHeight - 100) r.classList.add("active"); }); }
+        window.addEventListener("scroll", reveal); reveal();
     </script>
 </body>
 </html>
