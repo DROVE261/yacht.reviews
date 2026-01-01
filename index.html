@@ -42,22 +42,24 @@
             width: 100%; position: absolute; bottom: -4px; left: 0; z-index: 2001;
         }
 
-        /* --- HERO SECTION --- */
+        /* --- HERO SECTION (YOUTUBE FIX) --- */
         .hero-section {
             position: relative;
             width: 100%;
             height: 100vh;
             overflow: hidden;
             background: #000;
-            margin-top: 0;
         }
-        #bg-video {
-            position: absolute; top: 50%; left: 50%;
-            min-width: 100%; min-height: 100%;
+        .video-background {
+            position: absolute;
+            top: 50%; left: 50%;
+            width: 100vw; height: 56.25vw;
+            min-height: 100vh; min-width: 177.77vh;
             transform: translate(-50%, -50%);
-            object-fit: cover;
-            opacity: 0.8;
+            pointer-events: none;
         }
+        #player { width: 100%; height: 100%; }
+
         .hero-overlay {
             position: absolute; inset: 0;
             background: linear-gradient(to bottom, rgba(0,0,0,0.3) 0%, transparent 100%);
@@ -108,7 +110,6 @@
         @media (max-width: 1024px) {
             header.top-bar { padding: 0 30px; height: 70px; }
             #side-menu { width: 100%; }
-            .description-section { padding: 80px 5%; }
         }
 
         @keyframes fadeInUp {
@@ -157,9 +158,9 @@
     </header>
 
     <section class="hero-section">
-        <video id="bg-video" autoplay muted loop playsinline>
-            <source src="https://assets.mixkit.co/videos/preview/mixkit-luxury-yacht-sailing-on-the-ocean-1531-large.mp4" type="video/mp4">
-        </video>
+        <div class="video-background">
+            <div id="player"></div>
+        </div>
         <div class="hero-overlay"></div>
         <div class="video-text">
             <h2 class="serif italic">First & Foremost</h2>
@@ -235,13 +236,26 @@
         </div>
         <div class="flex justify-between items-center pt-10 border-t border-gray-50 text-[9px] tracking-[4px] text-gray-300 uppercase">
             <span>© 2026 BARBOUR YACHTING</span>
-            <div class="space-x-8 hidden md:block">
-                <a href="#">Privacy</a><a href="#">Terms</a>
-            </div>
         </div>
     </footer>
 
+    <script src="https://www.youtube.com/iframe_api"></script>
     <script>
+        // YouTube API Logic
+        var player;
+        function onYouTubeIframeAPIReady() {
+            player = new YT.Player('player', {
+                videoId: 'ok-M1yyss2U',
+                playerVars: {
+                    'autoplay': 1, 'controls': 0, 'showinfo': 0, 'rel': 0, 'loop': 1, 'mute': 1, 'start': 42, 'end': 80, 'playlist': 'ok-M1yyss2U'
+                },
+                events: {
+                    'onReady': function(e) { e.target.playVideo(); },
+                    'onStateChange': function(e) { if (e.data === YT.PlayerState.ENDED) { player.seekTo(42); } }
+                }
+            });
+        }
+
         // Preloader Logic
         window.addEventListener('load', () => {
             const loader = document.getElementById('loader');
@@ -259,15 +273,10 @@
             for (var i = 0; i < reveals.length; i++) {
                 var windowHeight = window.innerHeight;
                 var elementTop = reveals[i].getBoundingClientRect().top;
-                var elementVisible = 150;
-                if (elementTop < windowHeight - elementVisible) {
-                    reveals[i].classList.add("active");
-                }
+                if (elementTop < windowHeight - 150) { reveals[i].classList.add("active"); }
             }
         }
         window.addEventListener("scroll", reveal);
-        
-        // Initial call
         reveal();
     </script>
 </body>
