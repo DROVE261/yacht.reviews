@@ -11,54 +11,58 @@
     <style>
         :root { --fraser-navy: #000b1e; --fraser-red: #c02b2d; --fraser-gold: #b39359; --fraser-text: #1a1a1a; }
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Montserrat', sans-serif; background: #fff; color: var(--fraser-text); overflow-x: hidden; }
-        .serif { font-family: 'Playfair Display', serif; }
+        
+        body { font-family: 'Montserrat', sans-serif; background: #fff; color: var(--fraser-text); overflow-x: hidden; font-weight: 700; }
+        .serif { font-family: 'Playfair Display', serif; font-weight: 700; }
 
         /* --- PRELOADER --- */
         #loader { position: fixed; inset: 0; background: var(--fraser-navy); z-index: 9999; display: flex; justify-content: center; align-items: center; transition: 0.8s; }
-        /* تغيير اللون إلى الأبيض هنا */
-        .loader-content { color: #ffffff !important; letter-spacing: 10px; font-weight: 200; animation: pulse 2s infinite; }
+        .loader-content { color: #ffffff !important; letter-spacing: 10px; animation: pulse 2s infinite; }
 
-        header.top-bar { background-color: var(--fraser-navy); height: 90px; display: flex; align-items: center; justify-content: space-between; padding: 0 60px; position: fixed; top: 0; width: 100%; z-index: 2000; }
+        header.top-bar { background-color: var(--fraser-navy); height: 90px; display: flex; align-items: center; justify-content: space-between; padding: 0 40px; position: fixed; top: 0; width: 100%; z-index: 2000; }
         .red-line { height: 4px; background-color: var(--fraser-red); width: 100%; position: absolute; bottom: -4px; left: 0; z-index: 2001; }
         
         /* --- HERO --- */
         .hero-section { position: relative; width: 100%; height: 100vh; overflow: hidden; background: #000; }
         .video-background { position: absolute; top: 50%; left: 50%; width: 100vw; height: 56.25vw; min-height: 100vh; min-width: 177.77vh; transform: translate(-50%, -50%); pointer-events: none; }
         #player { width: 100%; height: 100%; }
-        .video-text h2 { font-size: clamp(2rem, 6vw, 4.5rem); letter-spacing: 0.5em; text-transform: uppercase; font-weight: 300; }
-
-        /* --- SIDE MENU --- */
-        #side-menu { position: fixed; top: 0; left: -100%; width: 400px; height: 100vh; background: var(--fraser-navy); z-index: 3000; transition: 0.7s; padding: 80px 50px; color: white; }
-        #side-menu.open { left: 0; }
-        .menu-link { display: block; font-size: 2rem; margin-bottom: 30px; opacity: 0.7; transition: 0.3s; }
-        .menu-link:hover { opacity: 1; color: var(--fraser-gold); padding-left: 10px; }
+        .video-text h2 { font-size: clamp(2rem, 6vw, 4.5rem); letter-spacing: 0.5em; text-transform: uppercase; }
 
         /* --- DECORATION --- */
-        .line-decorator { width: 80px; height: 3px; margin: 20px auto; display: flex; }
-        .line-black { width: 50%; height: 100%; background: #000b1e; }
-        .line-red { width: 50%; height: 100%; background: var(--fraser-red); }
+        .fraser-line { width: 100px; height: 3px; margin: 15px auto; display: flex; }
+        .f-navy { width: 50%; height: 100%; background: var(--fraser-navy); }
+        .f-red { width: 50%; height: 100%; background: var(--fraser-red); }
 
         /* --- YACHT CARD --- */
         .yacht-slider-card { background: #fff; text-align: center; }
-        .yacht-img-box { width: 100%; height: 280px; overflow: hidden; }
+        .yacht-img-box { width: 100%; height: 280px; overflow: hidden; position: relative; }
         .yacht-img-box img { width: 100%; height: 100%; object-fit: cover; }
         .specs-grid { display: grid; grid-template-cols: repeat(4, 1fr); border-top: 1px solid #eee; border-bottom: 1px solid #eee; margin: 15px 0; padding: 12px 0; }
-        .spec-val { font-size: 13px; font-weight: 700; display: block; }
-        .spec-label { font-size: 9px; text-transform: uppercase; color: #999; letter-spacing: 1px; }
+        .spec-val { font-size: 13px; display: block; }
+        .spec-label { font-size: 8px; text-transform: uppercase; color: #999; letter-spacing: 1px; font-weight: 700; }
         .price-strip { background: #f8f8f8; padding: 12px; font-size: 11px; letter-spacing: 1px; color: #333; }
-        .tab-btn.active { background: #000b1e; color: white; }
+        
+        .tab-btn { transition: 0.3s; border: 1px solid #000; width: 280px; padding: 15px 0; text-transform: uppercase; font-size: 11px; letter-spacing: 2px; font-weight: 700; }
+        .tab-btn.active { background: var(--fraser-navy); color: white; }
 
-        /* --- FRASER STYLE WIDE SLIDERS --- */
-        .wide-slide { position: relative; height: 550px; overflow: hidden; }
+        /* --- SLIDERS (Circular Arrows) --- */
+        .wide-slide { position: relative; height: 600px; overflow: hidden; }
         .wide-slide img { width: 100%; height: 100%; object-fit: cover; filter: brightness(0.8); }
         .wide-content { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; color: white; z-index: 10; text-align: center; }
-        .btn-glass { border: 1px solid white; padding: 15px 40px; text-transform: uppercase; letter-spacing: 2px; font-size: 10px; color: white; margin-top: 25px; transition: 0.3s; background: rgba(0,0,0,0.1); backdrop-filter: blur(5px); }
+        
+        .nav-circle {
+            position: absolute; top: 50%; transform: translateY(-50%);
+            width: 50px; height: 50px; border: 2px solid rgba(255,255,255,0.7);
+            border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            color: white; z-index: 40; cursor: pointer; transition: 0.3s; background: rgba(0,0,0,0.1);
+        }
+        .nav-circle:hover { background: white; color: black; }
+
+        .btn-glass { border: 1px solid white; padding: 15px 45px; text-transform: uppercase; letter-spacing: 2px; font-size: 10px; color: white; margin-top: 25px; transition: 0.3s; background: rgba(0,0,0,0.1); font-weight: 700; }
         .btn-glass:hover { background: white; color: black; }
 
-        /* --- NAV BUTTONS --- */
-        .nav-btn { position: absolute; top: 50%; transform: translateY(-50%); width: 50px; height: 50px; border: 1px solid rgba(255,255,255,0.4); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; z-index: 30; cursor: pointer; transition: 0.3s; }
-        .nav-btn:hover { background: white; color: black; }
+        .swiper-pagination-progressbar { background: #eee !important; height: 2px !important; }
+        .swiper-pagination-progressbar-fill { background: var(--fraser-navy) !important; }
 
         .reveal { opacity: 0; transform: translateY(30px); transition: 1s ease; }
         .reveal.active { opacity: 1; transform: translateY(0); }
@@ -69,22 +73,13 @@
 
     <div id="loader"><div class="loader-content serif italic">BARBOUR</div></div>
 
-    <div id="side-menu">
-        <button onclick="toggleMenu()" class="text-gold uppercase tracking-widest text-xs mb-20">Close [X]</button>
-        <nav class="serif italic">
-            <a href="javascript:switchYachts('sale')" class="menu-link" onclick="toggleMenu()">Yachts for Sale</a>
-            <a href="javascript:switchYachts('charter')" class="menu-link" onclick="toggleMenu()">Yacht Charter</a>
-            <a href="#" class="menu-link">Contact</a>
-        </nav>
-    </div>
-
     <header class="top-bar">
         <div class="flex items-center space-x-8">
-            <div onclick="toggleMenu()" class="cursor-pointer"><div class="w-8 h-[1px] bg-white mb-2"></div><div class="w-5 h-[1px] bg-white"></div></div>
+            <div class="cursor-pointer"><div class="w-8 h-[1px] bg-white mb-2"></div><div class="w-5 h-[1px] bg-white"></div></div>
             <svg class="w-5 h-5 fill-white" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
         </div>
-        <div class="logo text-white text-xl md:text-3xl tracking-[0.4em] serif italic font-bold">BARBOUR</div>
-        <div class="hidden md:flex space-x-8"><span class="text-white text-[10px] tracking-widest border-b border-gold font-bold">EN</span></div>
+        <div class="logo text-white text-xl md:text-3xl tracking-[0.4em] serif italic">BARBOUR</div>
+        <div class="hidden md:flex space-x-8"><span class="text-white text-[10px] tracking-widest border-b border-gold">EN</span></div>
         <div class="red-line"></div>
     </header>
 
@@ -96,93 +91,108 @@
     <section class="py-24 bg-white reveal">
         <div class="text-center mb-10">
             <span class="text-[11px] tracking-[5px] uppercase text-gray-400">First Choice</span>
-            <div class="line-decorator"><div class="line-black"></div><div class="line-red"></div></div>
-            <div class="flex justify-center space-x-4 mt-8 mb-16">
-                <button id="btn-charter" onclick="switchYachts('charter')" class="tab-btn active border border-black px-8 py-3 text-[10px] uppercase">Yachts for Charter</button>
-                <button id="btn-sale" onclick="switchYachts('sale')" class="tab-btn border border-black px-8 py-3 text-[10px] uppercase">Yachts for Sale</button>
+            <div class="fraser-line"><div class="f-navy"></div><div class="f-red"></div></div>
+            
+            <div class="flex flex-col items-center space-y-4 mt-8 mb-16">
+                <button id="btn-charter" onclick="switchYachts('charter')" class="tab-btn active">Yachts for Charter</button>
+                <button id="btn-sale" onclick="switchYachts('sale')" class="tab-btn">Yachts for Sale</button>
             </div>
         </div>
 
         <div class="swiper yachtSwiper px-10">
             <div id="yacht-wrapper" class="swiper-wrapper"></div>
-            <div class="swiper-pagination mt-10"></div>
+            <div class="swiper-pagination !static mt-12"></div>
+        </div>
+
+        <div class="text-center mt-16">
+            <button class="border-2 border-black px-12 py-4 text-[11px] uppercase tracking-[3px]">More Yachts For Sale</button>
         </div>
     </section>
 
     <section class="py-20 bg-white text-center reveal">
         <span class="text-[11px] tracking-[4px] text-gray-400 uppercase">First Class Yachts in the Finest Destinations</span>
-        <div class="line-decorator"><div class="line-black"></div><div class="line-red"></div></div>
+        <div class="fraser-line"><div class="f-navy"></div><div class="f-red"></div></div>
         <h2 class="serif text-4xl md:text-5xl uppercase mb-16">Experience The Ultimate Vacation</h2>
         
-        <div class="relative">
+        <div class="relative group">
             <div class="swiper experienceSwiper">
                 <div class="swiper-wrapper">
                     <div class="swiper-slide wide-slide">
-                        <img src="experience1.webp"> <div class="wide-content">
-                            <h4 class="serif text-5xl italic uppercase">What To Do</h4>
-                            <button class="btn-glass">Charter with Barbour</button>
-                        </div>
-                    </div>
-                    <div class="swiper-slide wide-slide">
-                        <img src="experience2.webp"> <div class="wide-content">
+                        <img src="ExploreDestinations.jpeg" alt="Explore Destinations"> 
+                        <div class="wide-content">
                             <h4 class="serif text-5xl italic uppercase">Where To Go</h4>
                             <button class="btn-glass">Explore Destinations</button>
                         </div>
                     </div>
+                    <div class="swiper-slide wide-slide">
+                        <img src="CharterwithBarbour.jpeg" alt="Charter with Barbour"> 
+                        <div class="wide-content">
+                            <h4 class="serif text-5xl italic uppercase">What To Do</h4>
+                            <button class="btn-glass">Charter with Barbour</button>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="nav-btn left-[30px]" id="exp-prev">❮</div>
-            <div class="nav-btn right-[30px]" id="exp-next">❯</div>
+            <div class="nav-circle left-[30px]" id="exp-prev">❮</div>
+            <div class="nav-circle right-[30px]" id="exp-next">❯</div>
         </div>
     </section>
 
     <section class="py-20 bg-white text-center reveal">
-        <span class="text-[11px] tracking-[4px] text-gray-400 uppercase">Trusted Yacht Brokerage</span>
-        <div class="line-decorator"><div class="line-black"></div><div class="line-red"></div></div>
-        <h2 class="serif text-4xl md:text-5xl uppercase mb-16">The Best Investment</h2>
+        <span class="text-[11px] tracking-[4px] text-gray-400 uppercase">The World's Leading Yacht Brokerage Company</span>
+        <div class="fraser-line"><div class="f-navy"></div><div class="f-red"></div></div>
+        <h2 class="serif text-4xl md:text-5xl uppercase mb-16">The Best Investment You'll Ever Make</h2>
         
         <div class="relative">
             <div class="swiper investmentSwiper">
                 <div class="swiper-wrapper">
                     <div class="swiper-slide wide-slide">
-                        <img src="investment1.jpg"> <div class="wide-content">
-                            <h4 class="serif text-5xl italic uppercase">Trusted Advisors</h4>
+                        <img src="SellWithBarbour.jpeg" alt="Sell With Barbour"> 
+                        <div class="wide-content">
+                            <h4 class="serif text-5xl italic uppercase">Sell Your Yacht</h4>
+                            <button class="btn-glass">Sell with Barbour</button>
+                        </div>
+                    </div>
+                    <div class="swiper-slide wide-slide">
+                        <img src="BuyWithBarbour.jpeg" alt="Buy With Barbour"> 
+                        <div class="wide-content">
+                            <h4 class="serif text-5xl italic uppercase">Buy a Yacht</h4>
                             <button class="btn-glass">Buy with Barbour</button>
                         </div>
                     </div>
                     <div class="swiper-slide wide-slide">
-                        <img src="investment2.jpg"> <div class="wide-content">
-                            <h4 class="serif text-5xl italic uppercase">Market Leaders</h4>
-                            <button class="btn-glass">Sell with Barbour</button>
+                        <img src="YachtsForSale.jpeg" alt="Yachts For Sale"> 
+                        <div class="wide-content">
+                            <h4 class="serif text-5xl italic uppercase">Trusted Advisors</h4>
+                            <button class="btn-glass">Yachts for Sale</button>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="nav-btn left-[30px]" id="inv-prev">❮</div>
-            <div class="nav-btn right-[30px]" id="inv-next">❯</div>
+            <div class="nav-circle left-[30px]" id="inv-prev">❮</div>
+            <div class="nav-circle right-[30px]" id="inv-next">❯</div>
         </div>
     </section>
 
-    <footer class="bg-white py-12 text-center border-t border-gray-100">
-        <div class="logo serif italic text-3xl font-bold mb-4">BARBOUR</div>
+    <footer class="bg-white py-16 text-center border-t border-gray-100">
+        <div class="logo serif italic text-3xl mb-4">BARBOUR</div>
         <p class="text-[9px] tracking-widest text-gray-400 uppercase">© 2026 BARBOUR YACHTING</p>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="https://www.youtube.com/iframe_api"></script>
     <script>
-        // دمج صورك الـ 5 مع بيانات Fraser فخمة
         const yachtData = {
             charter: [
                 { img: 'lioness V.webp', name: 'Lioness V', year: 'Benetti - 2006 (2018)', len: '63m', guests: '12', cabins: '6', crew: '19', price: 'From €425,000 P/Week' },
                 { img: 'Lurssen.jpg', name: 'Madsummer', year: 'Lürssen - 2019', len: '95m', guests: '12', cabins: '10', crew: '30', price: 'From €1,600,000 P/Week' }
             ],
             sale: [
-                { img: 'AzimutGrand105.jpg', name: 'Azimut Grande 105', year: 'Azimut - 2022', len: '32m', guests: '10', cabins: '5', crew: '5', price: 'Price: €8,900,000' },
                 { img: 'Ferretti860.jpeg', name: 'Ferretti 860', year: 'Ferretti - 2023', len: '26m', guests: '8', cabins: '4', crew: '3', price: 'Price: €5,400,000' },
-                { img: 'Lurssen.jpg', name: 'Lürssen Project', year: 'Lürssen - 2021', len: '85m', guests: '14', cabins: '7', crew: '25', price: 'Price: Upon Request' },
+                { img: 'yacht2.jpg', name: 'Lürssen Project', year: 'Lürssen - 2021', len: '85m', guests: '14', cabins: '7', crew: '25', price: 'Price: Upon Request' },
                 { img: 'lioness V.webp', name: 'Lioness V', year: 'Benetti - 2006', len: '63m', guests: '12', cabins: '6', crew: '19', price: 'Price: €45,000,000' },
-                { img: 'sunseeker.jpg', name: 'Sunseeker 95', year: 'Sunseeker - 2024', len: '28m', guests: '10', cabins: '5', crew: '4', price: 'Price: €7,200,000' }
+                { img: 'sunseeker.jpg', name: 'Sunseeker 95', year: 'Sunseeker - 2024', len: '28m', guests: '10', cabins: '5', crew: '4', price: 'Price: €7,200,000' },
+                { img: 'Lurssen.jpg', name: 'Carinthia VII', year: 'Lürssen - 2023', len: '97m', guests: '12', cabins: '8', crew: '33', price: 'Price: €95,000,000' }
             ]
         };
 
@@ -198,7 +208,7 @@
                         <div class="yacht-img-box"><img src="${y.img}"></div>
                         <h3 class="serif text-2xl uppercase mt-6 tracking-widest">${y.name}</h3>
                         <p class="text-[10px] text-gray-400 uppercase mt-1">${y.year}</p>
-                        <div class="specs-grid mx-4">
+                        <div class="specs-grid mx-4 font-bold">
                             <div class="spec-item"><span class="spec-val">${y.len}</span><span class="spec-label">Length</span></div>
                             <div class="spec-item"><span class="spec-val">${y.guests}</span><span class="spec-label">Guests</span></div>
                             <div class="spec-item"><span class="spec-val">${y.cabins}</span><span class="spec-label">Cabins</span></div>
@@ -211,29 +221,23 @@
 
             if(yachtSwiper) yachtSwiper.destroy();
             yachtSwiper = new Swiper(".yachtSwiper", {
-                slidesPerView: 1, spaceBetween: 20,
+                slidesPerView: 1.2, spaceBetween: 20, centeredSlides: true,
                 pagination: { el: ".swiper-pagination", type: "progressbar" },
-                breakpoints: { 768: { slidesPerView: 2 }, 1024: { slidesPerView: 3 } }
+                breakpoints: { 1024: { slidesPerView: 2.8, centeredSlides: false } }
             });
         }
 
-        new Swiper(".experienceSwiper", {
-            slidesPerView: 1.1, centeredSlides: true, spaceBetween: 20, loop: true,
-            navigation: { nextEl: "#exp-next", prevEl: "#exp-prev" },
-            breakpoints: { 1024: { slidesPerView: 1.2 } }
-        });
+        new Swiper(".experienceSwiper", { loop: true, navigation: { nextEl: "#exp-next", prevEl: "#exp-prev" } });
+        new Swiper(".investmentSwiper", { loop: true, navigation: { nextEl: "#inv-next", prevEl: "#inv-prev" } });
 
-        new Swiper(".investmentSwiper", {
-            slidesPerView: 1.1, centeredSlides: true, spaceBetween: 20, loop: true,
-            navigation: { nextEl: "#inv-next", prevEl: "#inv-prev" },
-            breakpoints: { 1024: { slidesPerView: 1.2 } }
-        });
-
+        let player;
         function onYouTubeIframeAPIReady() {
-            new YT.Player('player', {
+            player = new YT.Player('player', {
                 videoId: 'ok-M1yyss2U',
-                playerVars: { 'autoplay': 1, 'controls': 0, 'mute': 1, 'loop': 1, 'playlist': 'ok-M1yyss2U' },
+                playerVars: { 'autoplay': 1, 'controls': 0, 'mute': 1, 'loop': 1, 'start': 42, 'end': 80, 'playlist': 'ok-M1yyss2U', 'modestbranding': 1, 'rel': 0 },
+                events: { 'onStateChange': (e) => { if(e.data === YT.PlayerState.ENDED) player.seekTo(42); } }
             });
+            setInterval(() => { if(player && player.getCurrentTime() >= 80) player.seekTo(42); }, 1000);
         }
 
         window.addEventListener('load', () => {
@@ -244,7 +248,6 @@
             }, 1000);
         });
 
-        function toggleMenu() { document.getElementById('side-menu').classList.toggle('open'); }
         function reveal() { document.querySelectorAll(".reveal").forEach(r => { if (r.getBoundingClientRect().top < window.innerHeight - 100) r.classList.add("active"); }); }
         window.addEventListener("scroll", reveal); reveal();
     </script>
