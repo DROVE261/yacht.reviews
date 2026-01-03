@@ -425,10 +425,26 @@
                 </div>
             </div>
 
-            <button onclick="document.getElementById('fraserSlider').scrollBy({left: 400, behavior: 'smooth'})" style="position: absolute; right: 30px; top: 50%; transform: translateY(-50%); z-index: 100; width: 70px; height: 70px; border-radius: 50%; border: 2px solid white; background: rgba(255,255,255,0.2); color: white; font-size: 30px; cursor: pointer; display: flex; align-items: center; justify-content: center;">&#10095;</button>
+            <button onclick="openNav();document.getElementById('fraserSlider').scrollBy({left: 400, behavior: 'smooth'})" style="position: absolute; right: 30px; top: 50%; transform: translateY(-50%); z-index: 100; width: 70px; height: 70px; border-radius: 50%; border: 2px solid white; background: rgba(255,255,255,0.2); color: white; font-size: 30px; cursor: pointer; display: flex; align-items: center; justify-content: center;">&#10095;</button>
         </div>
     </section>
-
+    <div id="myNav" style="height: 0%; width: 100%; position: fixed; z-index: 1000; top: 0; left: 0; background-color: white; overflow-y: hidden; transition: 0.5s;">
+  <a href="javascript:void(0)" onclick="closeNav()" style="position: absolute; top: 20px; right: 45px; font-size: 60px; text-decoration: none; color: #000c26;">&times;</a>
+  
+  <div style="position: relative; top: 15%; width: 100%; text-align: left; padding-left: 40px;">
+    <img src="اسم_صورتك.png" style="width: 100%; max-width: 400px; margin-bottom: 40px;">
+    <div style="display: flex; flex-direction: column; gap: 20px;">
+        <a href="#charter" onclick="closeNav()" style="font-size: 24px; color: #000c26; text-decoration: none; border-bottom: 1px solid #eee; padding: 10px 0; width: 90%; display: flex; justify-content: space-between;">CHARTER <span>&gt;</span></a>
+        <a href="#sale" onclick="closeNav()" style="font-size: 24px; color: #000c26; text-decoration: none; border-bottom: 1px solid #eee; padding: 10px 0; width: 90%; display: flex; justify-content: space-between;">BUY <span>&gt;</span></a>
+        <a href="#" onclick="closeNav()" style="font-size: 24px; color: #000c26; text-decoration: none; border-bottom: 1px solid #eee; padding: 10px 0; width: 90%; display: flex; justify-content: space-between;">SELL <span>&gt;</span></a>
+        <a href="#" onclick="closeNav()" style="font-size: 24px; color: #000c26; text-decoration: none; border-bottom: 1px solid #eee; padding: 10px 0; width: 90%; display: flex; justify-content: space-between;">BUILD <span>&gt;</span></a>
+        <a href="#" onclick="closeNav()" style="font-size: 24px; color: #000c26; text-decoration: none; border-bottom: 1px solid #eee; padding: 10px 0; width: 90%; display: flex; justify-content: space-between;">MANAGE <span>&gt;</span></a>
+        <a href="#" onclick="closeNav()" style="font-size: 24px; color: #000c26; text-decoration: none; border-bottom: 1px solid #eee; padding: 10px 0; width: 90%; display: flex; justify-content: space-between;">CREW <span>&gt;</span></a>
+        <a href="#" onclick="closeNav()" style="font-size: 24px; color: #000c26; text-decoration: none; border-bottom: 1px solid #eee; padding: 10px 0; width: 90%; display: flex; justify-content: space-between;">ABOUT <span>&gt;</span></a>
+        <a href="#" onclick="closeNav()" style="font-size: 24px; color: #000c26; text-decoration: none; padding: 10px 0;">CONTACT</a>
+    </div>
+  </div>
+</div>
     <footer style="background: #000c26; color: white; padding: 80px 5% 40px; text-align: center;">
         <div style="display: flex; justify-content: space-between; flex-wrap: wrap; border-bottom: 1px solid #1a253d; padding-bottom: 50px;">
             <div style="flex: 1; min-width: 300px;">
@@ -452,3 +468,14 @@
     </footer>
 
 </div>
+<script>
+function openNav() {
+  // هذا السطر يخلي القائمة تظهر بملء الشاشة
+  document.getElementById("myNav").style.height = "100%";
+}
+
+function closeNav() {
+  // هذا السطر يخفي القائمة لما تضغط على X
+  document.getElementById("myNav").style.height = "0%";
+}
+</script>
