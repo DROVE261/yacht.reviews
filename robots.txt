@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://barbouryachting.vercel.app/sitemap.xml
+Sitemap: https://barbouryachting.github.io/BarbourYachting/sitemap.xml
